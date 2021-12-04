@@ -1,7 +1,7 @@
 <template>
   <div id="head1">
     <div class="header-image">
-      <img src="@/assets/animal-shelter.png" />
+      <img src="@/assets/animalshelter1.png" />
     </div>
     <div class="navigation">
       <nav-bar />
@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style scoped>
+#head1 {
+  background: #d7d0dd;
+}
 .header-image {
   grid-area: logo;
 }
@@ -35,6 +38,7 @@ export default {
 
 #head1 {
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "logo links"

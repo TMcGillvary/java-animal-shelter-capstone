@@ -1,6 +1,6 @@
 <template>
   <div class="petcard">
-    <h1>{{ pet.name }}</h1>
+    <h2>{{ pet.name }}</h2>
     <div class="img-container">
       <img v-bind:src="pet.pic" />
     </div>

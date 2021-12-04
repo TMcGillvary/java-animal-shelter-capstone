@@ -1,13 +1,24 @@
 <template>
   <div id="nav">
     <login />
-
-    <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-    <a href="#">About</a>&nbsp;|&nbsp;
-    <a href="#">Volunteer</a>&nbsp;|&nbsp;
-    <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"
-      >Logout</router-link>
-    <router-link :to="{ name: 'register' }" v-if="$store.state.token == ''">Need an account?</router-link>
+    <br/>
+    <br/>
+    <br/>
+    <router-link v-bind:to="{ name: 'home' }" class="links">Home</router-link
+    >&nbsp;|&nbsp; <a href="#" class="links">About</a>&nbsp;|&nbsp;
+    <a href="#" class="links">Volunteer</a>&nbsp;|&nbsp;
+    <router-link
+      v-bind:to="{ name: 'logout' }"
+      v-if="$store.state.token != ''"
+      class="links"
+      >Logout</router-link
+    >
+    <router-link
+      :to="{ name: 'register' }"
+      v-if="$store.state.token == ''"
+      class="links"
+      >Need an account?</router-link
+    >
   </div>
 </template>
 
@@ -22,4 +33,19 @@ export default {
 </script>
 
 <style>
+a.links {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  color: #6b23a8;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+}
+
+a.router-link-active {
+  color: #6b23a8;
+}
 </style>
