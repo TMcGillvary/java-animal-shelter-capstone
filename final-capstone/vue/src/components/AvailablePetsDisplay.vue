@@ -1,6 +1,7 @@
 <template>
-  <div class="pets-display">
+  <div id="pets-display">
     <pet-card
+      id="pet-card"
       v-for="pet in $store.state.pets"
       v-bind:key="pet.id"
       v-bind:pet="pet"
@@ -25,4 +26,9 @@ export default {
 </script>
 
 <style>
+#pets-display {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 </style>

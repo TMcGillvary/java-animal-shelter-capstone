@@ -1,9 +1,11 @@
 <template>
-  <div id="head">
+  <div id="head1">
     <div class="header-image">
-      <img src="@/assets/animal-shelter.png" height="200px" width="200px" />
+      <img src="@/assets/animal-shelter.png" />
     </div>
-    <nav-bar />
+    <div class="navigation">
+      <nav-bar />
+    </div>
   </div>
 </template>
 
@@ -17,5 +19,25 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.header-image {
+  grid-area: logo;
+}
+
+.header-image img {
+  width: 250px;
+  height: 100%;
+}
+
+.navigation {
+  grid-area: links;
+}
+
+#head1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "logo links"
+    "logo links";
+}
 </style>
