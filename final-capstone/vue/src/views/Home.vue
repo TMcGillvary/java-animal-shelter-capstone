@@ -1,32 +1,22 @@
 <template>
   <div class="home">
-    <nav-bar />
+    <header-area />
     <h1>Home</h1>
     <!-- <p>You must be authenticated to see this</p> -->
     <p>now you can do it without logging in(?)</p>
-    <pet-card
-      v-for="pet in $store.state.pets"
-      v-bind:key="pet.id"
-      v-bind:pet="pet"
-    />
+    <pets-display />
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
-import PetCard from "@/components/PetCard.vue";
-import petServices from "@/services/PetServices.js";
+import HeaderArea from "@/components/HeaderArea.vue";
+import PetsDisplay from "@/components/AvailablePetsDisplay.vue";
 
 export default {
   name: "home",
   components: {
-    NavBar,
-    PetCard,
-  },
-  created() {
-    petServices.displayPets().then((response) => {
-      this.$store.state.pets = response.data;
-    });
+    HeaderArea,
+    PetsDisplay,
   },
 };
 </script>
