@@ -22,7 +22,7 @@ public class JdbcPetDao implements PetDAO {
         List<Pet> pets = new ArrayList<>();
         String sql = "SELECT * FROM pets;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        if (results.next()) {
+        while (results.next()) {
             Pet pet = mapRowToPet(results);
             pets.add(pet);
         }
