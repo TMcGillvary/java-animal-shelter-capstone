@@ -1,9 +1,17 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS pets;
 DROP SEQUENCE IF EXISTS seq_user_id;
+DROP SEQUENCE IF EXISTS seq_pet_id;
 
 CREATE SEQUENCE seq_user_id
+  INCREMENT BY 1
+  NO MAXVALUE
+  NO MINVALUE
+  CACHE 1;
+  
+CREATE SEQUENCE seq_pet_id
   INCREMENT BY 1
   NO MAXVALUE
   NO MINVALUE
@@ -18,8 +26,20 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
+CREATE TABLE pets (
+  pet_id int DEFAULT nextval('seq_pet_id'::regclass) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  description VARCHAR(200) NOT NULL,
+  is_adoptable BOOLEAN DEFAULT true,
+  pic VARCHAR(200) DEFAULT 'https://via.placeholder.com/150x150.png',
+  breed VARCHAR(200),
+  pet_type VARCHAR(200),
+  CONSTRAINT PK_pet PRIMARY KEY (pet_id)
+);
+
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO pets (name,description,breed,pet_type) VALUES ('Roy','Daveville''s Dog', 'asiatic mammalian', 'squirrel');
 
 
 COMMIT TRANSACTION;
