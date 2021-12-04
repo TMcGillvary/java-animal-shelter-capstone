@@ -3,6 +3,8 @@
     <h1>{{ pet.name }}</h1>
     <img v-bind:src="pet.pic" />
     <p>{{ pet.description }}</p>
+    <p>Type: {{ pet.type }}</p>
+    <p>Breed: {{ pet.breed }}</p>
   </div>
 </template>
 

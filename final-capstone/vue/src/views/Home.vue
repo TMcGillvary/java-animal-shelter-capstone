@@ -15,12 +15,18 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import PetCard from "@/components/PetCard.vue";
+import petServices from "@/services/PetServices.js";
 
 export default {
   name: "home",
   components: {
     NavBar,
     PetCard,
+  },
+  created() {
+    petServices.displayPets().then((response) => {
+      this.$store.state.pets = response.data;
+    });
   },
 };
 </script>

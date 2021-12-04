@@ -21,6 +21,7 @@ public class PetController {
     }
 
     @GetMapping(path = "/")
+    // TODO wtf why does this work??
     public List<Pet> getAllPets() {
         return jdbcPetDao.getAllPets();
     }
