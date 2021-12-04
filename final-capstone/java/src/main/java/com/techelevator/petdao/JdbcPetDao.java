@@ -3,10 +3,12 @@ package com.techelevator.petdao;
 import com.techelevator.petmodel.Pet;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcPetDao implements PetDAO {
 
     private JdbcTemplate jdbcTemplate;
@@ -29,14 +31,13 @@ public class JdbcPetDao implements PetDAO {
 
     private Pet mapRowToPet(SqlRowSet results) {
         Pet pet = new Pet();
-        // TODO: remember to come and put this in here
-        pet.setPetID(results.getInt(""));
-        pet.setName(results.getString(""));
-        pet.setDescription(results.getString(""));
-        pet.setAdoptable(results.getBoolean(""));
-        pet.setPic(results.getString(""));
-        pet.setBreed(results.getString(""));
-        pet.setType(results.getString(""));
+        pet.setPetID(results.getInt("pet_id"));
+        pet.setName(results.getString("name"));
+        pet.setDescription(results.getString("description"));
+        pet.setAdoptable(results.getBoolean("is_adoptable"));
+        pet.setPic(results.getString("pic"));
+        pet.setBreed(results.getString("breed"));
+        pet.setType(results.getString("pet_type"));
         return pet;
     }
 
