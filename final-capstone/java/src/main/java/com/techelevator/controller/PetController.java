@@ -20,7 +20,7 @@ public class PetController {
         this.jdbcPetDao = jdbcPetDao;
     }
 
-    @GetMapping(path = "/")
+    @GetMapping(path = "/pets")
     // TODO wtf why does this work??
     public List<Pet> getAllPets() {
         return jdbcPetDao.getAllPets();
