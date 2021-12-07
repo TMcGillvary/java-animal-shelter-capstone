@@ -1,12 +1,18 @@
 package com.techelevator.volunteerapplicationmodel;
 
+import javax.validation.constraints.NotBlank;
+
 public class VolunteerApplication {
 
     private int applicationID;
     private int applicationStatusID;
+    @NotBlank (message = "Name cannot be blank.")
     private  String name;
+    @NotBlank (message = "Email cannot be blank.")
     private String email;
+    @NotBlank (message = "Phone cannot be blank.")
     private String phone;
+    @NotBlank (message = "Description cannot be blank.")
     private String description;
 
     public VolunteerApplication (){
