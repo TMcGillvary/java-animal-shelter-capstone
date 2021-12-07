@@ -15,5 +15,17 @@ export default {
 </script>
 
 <style>
-
+.button-style {
+  color: #2d292c;
+  cursor: pointer;
+  background: linear-gradient(0.25turn, #e6d0f7, #d7d1dd);
+  border-radius: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  width: 150px;
+  height: 50px;
+  font-size: 1.5rem;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+}
 </style>

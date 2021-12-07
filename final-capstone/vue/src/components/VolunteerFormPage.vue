@@ -4,7 +4,11 @@
     <h1>Volunteer With Us!</h1>
 
     <form class="new-volunteer-form" v-on:submit.prevent="submitForm">
-      <div class="status-message success" v-show="message !== ''">{{ message }}</div>
+      <div class="form-group">
+        <div class="status-message success" v-show="message !== ''">
+          {{ message }}
+        </div>
+      </div>
       <div class="form-group">
         <label for="name">Volunteer Name:</label>
         <input
@@ -14,8 +18,8 @@
           v-model="application.name"
           autocomplete="off"
         />
-        </div>
-        <div class="form-group">
+      </div>
+      <div class="form-group">
         <label for="email">Volunteer Email Address:</label>
         <input
           id="email"
@@ -24,8 +28,8 @@
           v-model="application.email"
           autocomplete="off"
         />
-        </div>
-        <div class="form-group">
+      </div>
+      <div class="form-group">
         <label for="phone">Best Phone Number:</label>
         <input
           id="phone"
@@ -34,8 +38,8 @@
           v-model="application.phoneNumber"
           autocomplete="off"
         />
-        </div>
-        <div class="form-group">
+      </div>
+      <div class="form-group">
         <label for="reason">Why Should We Hire You?</label>
         <textarea
           id="reason"
@@ -45,14 +49,14 @@
         />
       </div>
       <div class="form-buttons">
-      <button class="btn btn-submit">Submit</button>
-      <button
-        class="btn btn-cancel"
-        v-on:click.prevent="cancelForm"
-        type="cancel"
-      >
-        Cancel
-      </button>
+        <button class="btn btn-submit">Submit</button>
+        <button
+          class="btn btn-cancel"
+          v-on:click.prevent="cancelForm"
+          type="cancel"
+        >
+          Cancel
+        </button>
       </div>
     </form>
 
@@ -63,7 +67,7 @@
 <script>
 import HeaderArea from "./HeaderArea.vue";
 import appService from "@/services/ApplicationService.js";
-import FooterArea from './FooterArea.vue';
+import FooterArea from "./FooterArea.vue";
 
 export default {
   name: "VolunteerFormPage",
@@ -110,15 +114,15 @@ h1 {
 }
 
 .form-group {
-    text-align: left;
-    width: 80%;
-    margin: 10px auto 10px;
+  text-align: left;
+  width: 80%;
+  margin: 10px auto 10px;
 }
 
 .form-buttons {
-    text-align: center;
-    width: 80%;
-    margin: 10px auto 10px;
+  text-align: center;
+  width: 80%;
+  margin: 10px auto 10px;
 }
 
 label {
@@ -128,9 +132,8 @@ label {
 }
 .form-box {
   display: block;
-  width: 100%;
+  width: 99.5%;
   height: 30px;
-  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -150,21 +153,30 @@ select.form-control {
 
 .btn-submit {
   color: #2d292c;
-  background: linear-gradient(.25turn,#e6d0f7, #d7d1dd);
+  cursor: pointer;
+  background: linear-gradient(0.25turn, #e6d0f7, #d7d1dd);
+  border-radius: 15px;
   margin-right: 15px;
-  width: 200px;
+  width: 150px;
   height: 50px;
   font-size: 1.5rem;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
 }
 
 .btn-cancel {
   color: #fff;
+  cursor: pointer;
   background-color: #dc3545;
+  border-radius: 15px;
   margin-left: 15px;
-  width: 200px;
+  width: 150px;
   height: 50px;
   font-size: 1.5rem;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
 }
+
 .status-message {
   display: block;
   border-radius: 5px;
@@ -174,7 +186,10 @@ select.form-control {
   padding: 10px;
   margin-bottom: 10px;
 }
+
 .status-message.success {
   background-color: #90ee90;
+  margin: auto;
+  padding: 0.375rem 0.75rem;
 }
 </style>
