@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default {
 
-    // just putting this in here to have something so it's not angry
+    // Get List of Pets for Home
     displayPets() {
         return axios.get('/pets')
     },

@@ -19,7 +19,7 @@
 <script>
 import HeaderArea from "@/components/HeaderArea.vue";
 import PetsDisplay from "@/components/AvailablePetsDisplay.vue";
-import VolunteerForm from "@/components/VolunteerForm.vue";
+import VolunteerForm from "@/views/VolunteerForm.vue";
 import FooterArea from "@/components/FooterArea.vue";
 
 export default {
