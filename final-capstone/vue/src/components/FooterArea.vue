@@ -15,6 +15,7 @@ export default {};
 footer {
     background: #d7d0dd;
     padding: 10px;
+    text-align: center;
 }
 
 img {

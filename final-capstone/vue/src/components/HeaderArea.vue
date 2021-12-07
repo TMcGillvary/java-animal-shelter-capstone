@@ -39,6 +39,7 @@ export default {
 #head1 {
   display: grid;
   align-items: center;
+  justify-items: center;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "logo links"
