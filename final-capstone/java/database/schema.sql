@@ -2,8 +2,16 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS pets;
+DROP TABLE IF EXISTS applications;
+DROP TABLE IF EXISTS application_status;
+
+
 DROP SEQUENCE IF EXISTS seq_user_id;
 DROP SEQUENCE IF EXISTS seq_pet_id;
+DROP SEQUENCE IF EXISTS seq_application_id;
+DROP SEQUENCE IF EXISTS seq_application_status_id;
+
+
 
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
@@ -12,6 +20,18 @@ CREATE SEQUENCE seq_user_id
   CACHE 1;
   
 CREATE SEQUENCE seq_pet_id
+  INCREMENT BY 1
+  NO MAXVALUE
+  NO MINVALUE
+  CACHE 1;
+  
+CREATE SEQUENCE seq_application_id
+  INCREMENT BY 1
+  NO MAXVALUE
+  NO MINVALUE
+  CACHE 1;
+
+CREATE SEQUENCE seq_application_status_id
   INCREMENT BY 1
   NO MAXVALUE
   NO MINVALUE
@@ -37,10 +57,35 @@ CREATE TABLE pets (
   CONSTRAINT PK_pet PRIMARY KEY (pet_id)
 );
 
+CREATE TABLE application_status (
+  application_status_id int DEFAULT nextval('seq_application_status_id'::regclass) NOT NULL,
+  application_status VARCHAR(50) DEFAULT 'Pending' NOT NULL,
+  CONSTRAINT PK_application_status PRIMARY KEY (application_status_id)
+  );
+  
+CREATE TABLE applications (
+  application_id int DEFAULT nextval('seq_application_id'::regclass) NOT NULL,
+  application_status_id int NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL, 
+  phone VARCHAR(50) NOT NULL,
+  description VARCHAR(250) NOT NULL,
+  CONSTRAINT PK_application_id PRIMARY KEY (application_id),
+  CONSTRAINT FK_application_status_id FOREIGN KEY (application_status_id) REFERENCES application_status (application_status_id)
+  );
+
+  
+
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+
 INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Roy','Daveville''s Dog', 'https://i.postimg.cc/rs5qcCqw/dog1.png', 'the cutest pupper', 'squirrel');
 INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Dave','Mayor of Daveville', 'https://i.postimg.cc/C13wW6T2/dog2.png', 'mayorial dog', 'government');
 INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Tyson','Leader of the Cigar Party', 'https://www.murderati.com/storage/squirrel-smoke.jpg?__SQUARESPACE_CACHEVERSION=1256940730989', 'ringleader', 'badass squirrel');
+
+INSERT INTO application_status (application_status) VALUES ('Pending');
+INSERT INTO application_status (application_status) VALUES ('Approved');
+INSERT INTO application_status (application_status) VALUES ('Denied');
 
 COMMIT TRANSACTION;
