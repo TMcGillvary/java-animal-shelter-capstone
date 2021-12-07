@@ -66,9 +66,8 @@ CREATE TABLE application_status (
 CREATE TABLE applications (
   application_id int DEFAULT nextval('seq_application_id'::regclass) NOT NULL,
   application_status_id int NOT NULL,
-  first_name VARCHAR(50) NOT NULL,
-  last_name VARCHAR(50) NOT NULL,
-  email VARCHAR(50) NOT NULL, 
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL, ing
   phone VARCHAR(50) NOT NULL,
   description VARCHAR(250) NOT NULL,
   CONSTRAINT PK_application_id PRIMARY KEY (application_id),
