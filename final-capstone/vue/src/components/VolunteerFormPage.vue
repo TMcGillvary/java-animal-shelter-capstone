@@ -122,7 +122,7 @@ h1 {
 .form-buttons {
   text-align: center;
   width: 80%;
-  margin: 10px auto 10px;
+  margin: 2em auto 2em;
 }
 
 label {

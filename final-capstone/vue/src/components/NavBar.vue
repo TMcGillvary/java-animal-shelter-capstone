@@ -1,12 +1,14 @@
 <template>
   <div id="nav">
     <login />
-    <br/>
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <br />
     <router-link v-bind:to="{ name: 'home' }" class="links">Home</router-link
     >&nbsp;|&nbsp; <a href="#" class="links">About</a>&nbsp;|&nbsp;
-    <a href="#" class="links">Volunteer</a>&nbsp;|&nbsp;
+    <router-link v-bind:to="{ name: 'volunteer-form' }" class="links"
+      >Volunteer</router-link
+    >&nbsp;|&nbsp;
     <router-link
       v-bind:to="{ name: 'logout' }"
       v-if="$store.state.token != ''"
