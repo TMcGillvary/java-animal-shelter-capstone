@@ -4,7 +4,9 @@ import com.techelevator.petmodel.Pet;
 import com.techelevator.volunteerapplicationmodel.VolunteerApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JdbcVolunteerApplicationDao implements VolunteerApplicationDao {
 
     private JdbcTemplate jdbcTemplate;
@@ -15,7 +17,7 @@ public class JdbcVolunteerApplicationDao implements VolunteerApplicationDao {
 
     @Override
     public VolunteerApplication getVolunteerApplicationById(int newId){
-        String sql = "SELECT application_status_id, name, email, phone, description" +
+        String sql = "SELECT application_id, application_status_id, name, email, phone, description" +
                 " FROM applications" +
                 " WHERE application_id = ?;";
         VolunteerApplication application = null;

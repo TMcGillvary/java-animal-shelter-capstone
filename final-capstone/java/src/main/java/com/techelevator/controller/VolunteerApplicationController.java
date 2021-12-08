@@ -5,13 +5,11 @@ import com.techelevator.petmodel.Pet;
 import com.techelevator.volunteerapplicationdao.JdbcVolunteerApplicationDao;
 import com.techelevator.volunteerapplicationmodel.VolunteerApplication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
+@CrossOrigin
 public class VolunteerApplicationController {
     @Autowired
     private JdbcVolunteerApplicationDao jdbcVolunteerApplicationDao;

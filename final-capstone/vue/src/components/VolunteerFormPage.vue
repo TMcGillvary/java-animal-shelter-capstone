@@ -35,7 +35,7 @@
           id="phone"
           type="text"
           class="form-box"
-          v-model="application.phoneNumber"
+          v-model="application.phone"
           autocomplete="off"
         />
       </div>
@@ -44,7 +44,7 @@
         <textarea
           id="reason"
           class="form-box"
-          v-model="application.reasonWhy"
+          v-model="application.description"
           autocomplete="off"
         />
       </div>
@@ -80,8 +80,8 @@ export default {
       application: {
         name: "",
         email: "",
-        phoneNumber: "",
-        reasonWhy: "",
+        phone: "",
+        description: "",
       },
       message: "",
     };
@@ -91,13 +91,14 @@ export default {
       const newApplication = {
         name: this.application.name,
         email: this.application.email,
-        phoneNumber: this.application.phoneNumber,
-        reasonWhy: this.application.reasonWhy,
+        phone: this.application.phone,
+        description: this.application.description,
       };
-
+      //changed to 200 code
       appService.submitForm(newApplication).then((response) => {
-        if (response.status === 201) {
+        if (response.status === 200) {
           this.message = "Form successfully submitted!";
+          this.application = {};
         }
       });
     },
