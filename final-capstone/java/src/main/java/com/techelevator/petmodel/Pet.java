@@ -1,13 +1,18 @@
 package com.techelevator.petmodel;
 
-public class Pet {
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class Pet {
+//can change to "adoptable" if we want no json stuff
     private int petID;
     private String name;
     private String description;
+    @JsonProperty("is_adoptable")
     private boolean isAdoptable;
     private String pic;
     private String breed;
+    @JsonProperty("pet_type")
     private String type;
 
     public Pet() {
@@ -48,6 +53,7 @@ public class Pet {
         this.description = description;
     }
 
+    @JsonIgnore
     public boolean isAdoptable() {
         return isAdoptable;
     }
