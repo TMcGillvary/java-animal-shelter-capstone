@@ -7,4 +7,8 @@ export default {
         return axios.get('/pets')
     },
 
+    addPet(newPet) {
+        return axios.post('/addnewpet', newPet)
+    },
+
 }

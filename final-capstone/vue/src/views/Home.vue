@@ -3,7 +3,10 @@
     <div class="head2">
       <header-area />
     </div>
-    <logged-in-view />
+    <!--added "logged in view here with a div around it-ang -->
+    <div class="logged-in-view">
+      <logged-in-view />
+    </div>
     <div class="pets-area">
       <h1>Check Out Our Pets!!</h1>
       <pets-display />
@@ -39,9 +42,14 @@ export default {
 <style scoped>
 /*
 Grid Layout
+added a grid area for logged in view -ang
 */
 .head2 {
   grid-area: header;
+}
+
+.logged-in-view {
+  grid-area: logged-in-view;
 }
 
 .pets-area {
@@ -58,6 +66,7 @@ Grid Layout
 
 /* 
 Desktop Layout
+added "logged-in-view" to grid areas -ang
 */
 
 #home {
@@ -66,6 +75,7 @@ Desktop Layout
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "header header"
+    "logged-in-view logged-in-view"
     "pet-display pet-display"
     "vform vform"
     "footer footer";
