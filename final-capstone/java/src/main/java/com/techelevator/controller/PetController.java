@@ -30,7 +30,7 @@ public class PetController {
     }
 
     @RequestMapping(path = "/addnewpet", method = RequestMethod.POST)
-    public Pet addNewPet(@RequestBody Pet pet) {
+    public Pet addPetListing(@RequestBody Pet pet) {
         return jdbcPetDao.addPetListing(pet);
     }
 
