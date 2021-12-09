@@ -3,6 +3,7 @@
     <div class="head2">
       <header-area />
     </div>
+    <logged-in-view />
     <div class="pets-area">
       <h1>Check Out Our Pets!!</h1>
       <pets-display />
@@ -21,6 +22,7 @@ import HeaderArea from "@/components/HeaderArea.vue";
 import PetsDisplay from "@/components/AvailablePetsDisplay.vue";
 import VolunteerForm from "@/views/VolunteerForm.vue";
 import FooterArea from "@/components/FooterArea.vue";
+import LoggedInView from "@/views/LoggedInView.vue";
 
 export default {
   name: "home",
@@ -29,6 +31,7 @@ export default {
     PetsDisplay,
     VolunteerForm,
     FooterArea,
+    LoggedInView,
   },
 };
 </script>
