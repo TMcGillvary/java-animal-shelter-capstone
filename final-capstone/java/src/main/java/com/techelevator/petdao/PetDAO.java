@@ -11,5 +11,7 @@ public interface PetDAO {
     public Pet addPetListing(Pet newPet);
 
     public Pet getPetById(int newId);
+
+    public void updatePetListing(Pet pet);
 }
 

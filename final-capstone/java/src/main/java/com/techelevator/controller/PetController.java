@@ -34,4 +34,7 @@ public class PetController {
         return jdbcPetDao.addPetListing(pet);
     }
 
+    @RequestMapping(path = "/updatepetlisting", method = RequestMethod.PUT)
+    public void updatePetListing(@RequestBody Pet pet) { jdbcPetDao.updatePetListing(pet);}
+
 }
