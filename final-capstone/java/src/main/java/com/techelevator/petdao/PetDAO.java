@@ -7,4 +7,9 @@ import java.util.List;
 public interface PetDAO {
 
     List<Pet> getAllPets();
+
+    public Pet addPetListing(Pet newPet);
+
+    public Pet getPetById(int newId);
 }
+
