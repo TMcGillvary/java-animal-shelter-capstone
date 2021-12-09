@@ -3,9 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.petdao.JdbcPetDao;
 import com.techelevator.petmodel.Pet;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +22,16 @@ public class PetController {
     public List<Pet> getAllPets() {
         return jdbcPetDao.getAllPets();
     }
+
+    @RequestMapping(path = "/petid", method = RequestMethod.GET)
+    public Pet getPetById(int newId) {
+        Pet pet = new Pet();
+        return jdbcPetDao.getPetById(pet.getPetID());
+    }
+
+    @RequestMapping(path = "/addnewpet", method = RequestMethod.POST)
+    public Pet addNewPet(@RequestBody Pet pet) {
+        return jdbcPetDao.addPetListing(pet);
+    }
+
 }

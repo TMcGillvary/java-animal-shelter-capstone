@@ -29,6 +29,28 @@ public class JdbcPetDao implements PetDAO {
         return pets;
     }
 
+    @Override
+    public Pet getPetById(int newId) {
+        String sql = "SELECT pet_id, name, description, isAdoptable, pic, breed, type " +
+                " FROM pets" +
+                " WHERE pet_id = ?;";
+        Pet pet = null;
+        SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql, newId);
+        if (results.next()){
+            pet = mapRowToPet(results);
+        }
+        return pet;
+    }
+
+    @Override
+    public Pet addPetListing(Pet newPet) {
+        String sql = "INSERT INTO pets (name, description, isAdoptable, pic, breed, type)" +
+                " VALUES(?,?,?,?,?,?) RETURNING pet_id;";
+        Integer petId = jdbcTemplate.queryForObject(sql, Integer.class, newPet.getName(), newPet.getDescription(), newPet.isAdoptable(),
+                newPet.getPic(), newPet.getBreed(), newPet.getType());
+        return getPetById(petId);
+    }
+
     private Pet mapRowToPet(SqlRowSet results) {
         Pet pet = new Pet();
         pet.setPetID(results.getInt("pet_id"));
