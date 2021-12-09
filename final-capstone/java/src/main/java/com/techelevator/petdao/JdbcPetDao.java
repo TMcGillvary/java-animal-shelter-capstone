@@ -31,7 +31,7 @@ public class JdbcPetDao implements PetDAO {
 
     @Override
     public Pet getPetById(int newId) {
-        String sql = "SELECT pet_id, name, description, isAdoptable, pic, breed, type " +
+        String sql = "SELECT pet_id, name, description, is_adoptable, pic, breed, pet_type " +
                 " FROM pets" +
                 " WHERE pet_id = ?;";
         Pet pet = null;
@@ -44,7 +44,7 @@ public class JdbcPetDao implements PetDAO {
 
     @Override
     public Pet addPetListing(Pet newPet) {
-        String sql = "INSERT INTO pets (name, description, isAdoptable, pic, breed, type)" +
+        String sql = "INSERT INTO pets (name, description, is_adoptable, pic, breed, pet_type)" +
                 " VALUES(?,?,?,?,?,?) RETURNING pet_id;";
         Integer petId = jdbcTemplate.queryForObject(sql, Integer.class, newPet.getName(), newPet.getDescription(), newPet.isAdoptable(),
                 newPet.getPic(), newPet.getBreed(), newPet.getType());
