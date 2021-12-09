@@ -95,15 +95,34 @@ export default {
         description: this.application.description,
       };
       //changed to 200 code
-      appService.submitForm(newApplication).then((response) => {
-        if (response.status === 200) {
-          this.message = "Form successfully submitted!";
-          this.application = {};
-        }
-      });
+      appService
+        .submitForm(newApplication)
+        .then((response) => {
+          if (response.status === 200) {
+            this.message = "Form successfully submitted!";
+            this.application = {};
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "sending");
+        });
     },
     cancelForm() {
       this.application = {};
+    },
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.message =
+          "Error " +
+          verb +
+          " form. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.message = "Error " + verb + " form. Server could not be reached.";
+      } else {
+        this.message = "Error " + verb + " form. Request could not be created.";
+      }
     },
   },
 };
