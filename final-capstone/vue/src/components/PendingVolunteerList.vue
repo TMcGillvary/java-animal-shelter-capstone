@@ -51,7 +51,7 @@
           </td>
           <td>&nbsp;</td>
           --></tr>
-
+          <!-- this will need replaced with the actual database list -->
           <tr v-for="volunteer in testVolunteerApps" v-bind:key="volunteer.id">
             <td>
               <input
@@ -146,6 +146,8 @@ export default {
       // this is to allow code to compile, won't be in final code
       return id;
       // fill in code here for approving app
+      // insert their app details into user details table and return the user_details_id
+      // second method passing in the user details id to create a login with a temp password of password
     },
 
     denyApp(id) {
