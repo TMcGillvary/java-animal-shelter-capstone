@@ -11,4 +11,8 @@ export default {
         return axios.post('/addnewpet', newPet)
     },
 
+    updatePet(newPet) {
+        return axios.put('/updatepetlisting', newPet)
+    },
+
 }

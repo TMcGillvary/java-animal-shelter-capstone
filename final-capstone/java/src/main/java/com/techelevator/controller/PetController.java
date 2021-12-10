@@ -23,7 +23,7 @@ public class PetController {
         return jdbcPetDao.getAllPets();
     }
 
-    @RequestMapping(path = "/petid", method = RequestMethod.GET)
+    @RequestMapping(path = "/pets/{petid}", method = RequestMethod.GET)
     public Pet getPetById(int newId) {
         Pet pet = new Pet();
         return jdbcPetDao.getPetById(pet.getPetID());
