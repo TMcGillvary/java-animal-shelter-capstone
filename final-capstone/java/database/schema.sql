@@ -5,13 +5,10 @@ DROP TABLE IF EXISTS pets;
 DROP TABLE IF EXISTS applications;
 DROP TABLE IF EXISTS application_status;
 
-
 DROP SEQUENCE IF EXISTS seq_user_id;
 DROP SEQUENCE IF EXISTS seq_pet_id;
 DROP SEQUENCE IF EXISTS seq_application_id;
 DROP SEQUENCE IF EXISTS seq_application_status_id;
-
-
 
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
@@ -30,13 +27,6 @@ CREATE SEQUENCE seq_application_id
   NO MAXVALUE
   NO MINVALUE
   CACHE 1;
-
-CREATE SEQUENCE seq_application_status_id
-  INCREMENT BY 1
-  NO MAXVALUE
-  NO MINVALUE
-  CACHE 1;
-
 
 CREATE TABLE users (
 	user_id int DEFAULT nextval('seq_user_id'::regclass) NOT NULL,
@@ -58,8 +48,8 @@ CREATE TABLE pets (
 );
 
 CREATE TABLE application_status (
-  application_status_id int DEFAULT nextval('seq_application_status_id'::regclass) NOT NULL,
-  application_status VARCHAR(50) DEFAULT 'Pending' NOT NULL,
+  application_status_id int NOT NULL,
+  application_status VARCHAR(50) NOT NULL,
   CONSTRAINT PK_application_status PRIMARY KEY (application_status_id)
   );
   
@@ -74,7 +64,6 @@ CREATE TABLE applications (
   CONSTRAINT FK_application_status_id FOREIGN KEY (application_status_id) REFERENCES application_status (application_status_id)
   );
 
-  
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
@@ -83,8 +72,11 @@ INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Roy','Daveville'
 INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Dave','Mayor of Daveville', 'https://i.postimg.cc/C13wW6T2/dog2.png', 'mayorial dog', 'government');
 INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Tyson','Leader of the Cigar Party', 'https://www.murderati.com/storage/squirrel-smoke.jpg?__SQUARESPACE_CACHEVERSION=1256940730989', 'ringleader', 'badass squirrel');
 
-INSERT INTO application_status (application_status) VALUES ('Pending');
-INSERT INTO application_status (application_status) VALUES ('Approved');
-INSERT INTO application_status (application_status) VALUES ('Denied');
+INSERT INTO application_status (application_status_id, application_status) VALUES (1, 'Pending');
+INSERT INTO application_status (application_status_id, application_status) VALUES (2, 'Approved');
+INSERT INTO application_status (application_status_id, application_status) VALUES (3, 'Denied');
+
+INSERT INTO applications (application_status_id, name, email, phone, description) VALUES('1', 'Peggy Sue', 'peggy.sue@gmail.com', '513-123-4567', 'I am only a test');
+INSERT INTO applications (application_status_id, name, email, phone, description) VALUES('1', 'Johnny Cash', 'cash4cash@gmail.com', '123-421-9999', 'Folsom Prison Blues makes me good with animals');
 
 COMMIT TRANSACTION;
