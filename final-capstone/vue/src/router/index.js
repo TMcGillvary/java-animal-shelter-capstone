@@ -9,6 +9,7 @@ import VolunteerFormPage from '@/components/VolunteerFormPage.vue'
 import AddPet from '@/components/AddPet.vue'
 import UpdatePet from '@/components/UpdatePet.vue'
 import VolunteerDirectory from '@/components/VolunteerDirectory.vue'
+import PendingVolunteerList from "@/components/PendingVolunteerList.vue"
 
 Vue.use(Router)
 
@@ -89,8 +90,17 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+
     },
 
+    {
+      path: "/pending-volunteers",
+      name: "pending-volunteer-list",
+      component: PendingVolunteerList,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 
