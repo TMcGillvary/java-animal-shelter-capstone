@@ -31,8 +31,8 @@ public class PetController {
     }
    //this is for updating a pet
     @GetMapping(path = "/pets/{petid}")
-    public Pet getPetWithId(@PathVariable int newId){
-        return jdbcPetDao.getPetWithId(newId);
+    public Pet getPetWithId(@PathVariable int petid){
+        return jdbcPetDao.getPetWithId(petid);
     }
 
 
