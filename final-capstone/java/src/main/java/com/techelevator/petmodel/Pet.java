@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Pet {
 //can change to "adoptable" if we want no json stuff
+    @JsonProperty("pet_id")
     private int petID;
     private String name;
     private String description;
