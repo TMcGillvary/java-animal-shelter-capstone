@@ -1,7 +1,14 @@
 <template>
   <div id="add-pet">
     <header-area />
-    <h1>Add a New Pet</h1>
+    <h1>Update a New Pet</h1>
+    <!--putting in a separate form to look up the pet id and populate the form-->
+    <!--NEW PLAN no id, need to display a list of all pets to select from-->
+
+    <!-- <h1>Enter the pet id of the pet you want to update:</h1>
+    <form class="pet-lookup" v-on:submit.prevent="getPetById">
+      <div class="pet-lookup"></div>
+    </form> -->
 
     <form class="new-pet" v-on:submit.prevent="addPet">
       <div class="form-group">
@@ -128,6 +135,10 @@ export default {
     cancelForm() {
       this.pet = {};
     },
+    // putting in a getPetById method here for the pet-lookup
+    // getPetById(petId) {
+    //   this.pet = {};
+    // },
 
     handleErrorResponse(error, verb) {
       if (error.response) {
