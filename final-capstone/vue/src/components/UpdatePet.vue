@@ -128,6 +128,10 @@ export default {
     cancelForm() {
       this.pet = {};
     },
+    // putting in a getPetById method here for the pet-lookup
+    // getPetById(petId) {
+    //   this.pet = {};
+    // },
 
     handleErrorResponse(error, verb) {
       if (error.response) {

@@ -103,7 +103,8 @@ const router = new Router({
     },
   ]
 })
-
+//forces user to login if required
+//add force to password change page if flag
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);

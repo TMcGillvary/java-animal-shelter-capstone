@@ -14,5 +14,7 @@ export default {
     updatePet(newPet) {
         return axios.put('/updatepetlisting', newPet)
     },
+    // // do we need to map petPetById?
+    // getPetById()
 
 }
