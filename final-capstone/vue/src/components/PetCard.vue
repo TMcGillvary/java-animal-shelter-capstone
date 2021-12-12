@@ -5,8 +5,16 @@
       <img v-bind:src="pet.pic" />
     </div>
     <p>{{ pet.description }}</p>
-    <p>Type: {{ pet.type }}</p>
+    <p>Type: {{ pet.pet_type }}</p>
     <p>Breed: {{ pet.breed }}</p>
+
+    <router-link
+      tag="button"
+      class="button-style"
+      v-if="$store.state.token != ''"
+      v-bind:to="{ name: 'update-pet', params: { id: pet.id } }"
+      >Edit Pet</router-link
+    >
   </div>
 </template>
 

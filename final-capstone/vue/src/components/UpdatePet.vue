@@ -1,9 +1,9 @@
 <template>
   <div id="add-pet">
     <header-area />
-    <h1>Add a New Pet</h1>
+    <h1>Edit Pet</h1>
 
-    <form class="new-pet" v-on:submit.prevent="addPet">
+    <form class="new-pet" v-on:submit.prevent="updatePet">
       <div class="form-group">
         <div class="status-message success" v-show="message !== ''">
           {{ message }}
@@ -16,7 +16,7 @@
           id="name"
           type="text"
           class="form-box"
-          v-model="pet.name"
+          v-model="selectedPet.name"
           autocomplete="off"
         />
       </div>
@@ -27,7 +27,7 @@
           id="description"
           type="text"
           class="form-box"
-          v-model="pet.description"
+          v-model="selectedPet.description"
           autocomplete="off"
         />
       </div>
@@ -38,7 +38,7 @@
           id="pic"
           type="text"
           class="form-box"
-          v-model="pet.pic"
+          v-model="selectedPet.pic"
           autocomplete="off"
         />
       </div>
@@ -49,7 +49,7 @@
           id="breed"
           type="text"
           class="form-box"
-          v-model="pet.breed"
+          v-model="selectedPet.breed"
           autocomplete="off"
         />
       </div>
@@ -60,7 +60,7 @@
           id="pet-type"
           type="text"
           class="form-box"
-          v-model="pet.pet_type"
+          v-model="selectedPet.pet_type"
           autocomplete="off"
         />
       </div>
@@ -142,6 +142,14 @@ export default {
       } else {
         this.message = "Error " + verb + " form. Request could not be created.";
       }
+    },
+  },
+
+  computed: {
+    selectedPet() {
+      return this.$store.state.pets.find(
+        (pet) => pet.id == this.$route.params.id
+      );
     },
   },
 };

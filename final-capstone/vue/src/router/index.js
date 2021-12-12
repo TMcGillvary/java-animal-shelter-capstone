@@ -76,7 +76,7 @@ const router = new Router({
       }
     },
     {
-      path: "/update-pet",
+      path: "/update-pet/:id",
       name: "update-pet",
       component: UpdatePet,
       meta: {
