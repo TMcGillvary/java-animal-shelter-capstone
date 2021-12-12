@@ -86,47 +86,41 @@ import FooterArea from "./FooterArea.vue";
 import PetService from "@/services/PetServices.js";
 
 export default {
+  name: "update-pet",
   components: {
     HeaderArea,
     FooterArea,
   },
   data() {
     return {
-      pet: {
-        name: "",
-        description: "",
-        is_adoptable: true,
-        pic: "",
-        breed: "",
-        pet_type: "",
-      },
       message: "",
     };
   },
   methods: {
     updatePet() {
       const newPet = {
-        name: this.pet.name,
-        description: this.pet.description,
-        is_adoptable: this.pet.is_adoptable,
-        pic: this.pet.pic,
-        breed: this.pet.breed,
-        pet_type: this.pet.pet_type,
+        pet_id: this.selectedPet.pet_id,
+        name: this.selectedPet.name,
+        description: this.selectedPet.description,
+        is_adoptable: this.selectedPet.is_adoptable,
+        pic: this.selectedPet.pic,
+        breed: this.selectedPet.breed,
+        pet_type: this.selectedPet.pet_type,
       };
       //changed to 200 code
       PetService.updatePet(newPet)
         .then((response) => {
           if (response.status === 200) {
             this.message = "Pet successfully changed!";
-            this.pet = {};
+            this.$router.push({ name: "home" });
           }
         })
         .catch((error) => {
-          this.handleErrorResponse(error, "sending");
+          this.handleErrorResponse(error, "updating");
         });
     },
     cancelForm() {
-      this.pet = {};
+      this.$router.push({ name: "home" });
     },
     // putting in a getPetById method here for the pet-lookup
     // getPetById(petId) {
@@ -152,7 +146,7 @@ export default {
   computed: {
     selectedPet() {
       return this.$store.state.pets.find(
-        (pet) => pet.id == this.$route.params.id
+        (pet) => pet.pet_id == this.$route.params.id
       );
     },
   },

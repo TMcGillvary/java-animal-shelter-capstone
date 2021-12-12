@@ -12,7 +12,7 @@
       tag="button"
       class="button-style"
       v-if="$store.state.token != ''"
-      v-bind:to="{ name: 'update-pet', params: { id: pet.id } }"
+      v-bind:to="{ name: 'update-pet', params: { id: pet.pet_id } }"
       >Edit Pet</router-link
     >
   </div>
