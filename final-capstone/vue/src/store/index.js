@@ -20,7 +20,11 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    /* for displayPets() */
     pets: [],
+    /* for getPendingApplications() */
+    apps: [],
+
     newPet: {
       ID: 0,
       name: "",

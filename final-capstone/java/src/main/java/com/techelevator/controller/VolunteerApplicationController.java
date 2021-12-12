@@ -22,7 +22,11 @@ public class VolunteerApplicationController {
     public VolunteerApplication getVolunteerApplicationById(int newId) {
         VolunteerApplication volunteerApplication = new VolunteerApplication();
         return jdbcVolunteerApplicationDao.getVolunteerApplicationById(volunteerApplication.getApplicationID());
-        //TODO we don't think this is right but we didn't know what else to do. plz send help
+    }
+
+    @GetMapping(path = "/pendingappslist")
+    public List<VolunteerApplication> getAllPendingApps() {
+        return jdbcVolunteerApplicationDao.getAllApps();
     }
 
     @RequestMapping(path = "/volunteerapplication", method = RequestMethod.POST)

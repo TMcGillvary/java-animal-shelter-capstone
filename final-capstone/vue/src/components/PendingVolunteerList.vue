@@ -51,16 +51,19 @@
           </td>
           <td>&nbsp;</td>
           --></tr>
-          <!-- this will need replaced with the actual database list -->
-          <tr v-for="volunteer in testVolunteerApps" v-bind:key="volunteer.id">
+
+          <tr
+            v-for="volunteer in $store.state.apps"
+            v-bind:key="volunteer.applicationID"
+          >
             <td>
               <input
                 type="checkbox"
-                v-bind:id="volunteer.id"
-                v-bind:value="volunteer.id"
+                v-bind:id="volunteer.applicationID"
+                v-bind:value="volunteer.applicationID"
                 v-model="selectedIDs"
                 v-bind:checked="{
-                  isChecked: selectedIDs.includes(volunteer.id),
+                  isChecked: selectedIDs.includes(volunteer.applicationID),
                 }"
                 v-bind:change="updateCheckboxes()"
               />
@@ -69,7 +72,7 @@
             <td>{{ volunteer.email }}</td>
             <td>{{ volunteer.phone }}</td>
             <td>{{ volunteer.description }}</td>
-            <td>{{ volunteer.status }}</td>
+            <td>{{ volunteer.applicationStatus }}</td>
             <td>
               <!-- Approve the App (code not complete) -->
               <button class="approve" v-on:click="approveApp(id)">
@@ -107,7 +110,7 @@
 
 <script>
 import HeaderArea from "@/components/HeaderArea.vue";
-// import appService from "@/services/ApplicationService.js";
+import appService from "@/services/ApplicationService.js";
 import FooterArea from "@/components/FooterArea.vue";
 
 export default {
@@ -120,34 +123,21 @@ export default {
       allSelected: false,
       // this is to select apps to approve/deny
       selectedIDs: [],
-      // this is test data, will be removed once hooked to database
-      testVolunteerApps: [
-        {
-          id: 1,
-          name: "Peggy Sue",
-          email: "peggy.sue@gmail.com",
-          phone: "888-867-5309",
-          description: "I am only a test",
-          status: "Pending",
-        },
-        {
-          id: 2,
-          name: "Johnny Cash",
-          email: "cash4cash@gmail.com",
-          phone: "888-867-5309",
-          description: "I'm a rock star",
-          status: "Pending",
-        },
-      ],
     };
+  },
+  created() {
+    appService.getPendingApplications().then((response) => {
+      this.$store.state.apps = response.data;
+    });
   },
   methods: {
     approveApp(id) {
       // this is to allow code to compile, won't be in final code
       return id;
       // fill in code here for approving app
-      // insert their app details into user details table and return the user_details_id
-      // second method passing in the user details id to create a login with a temp password of password
+      // if approved, we are going to register the volunteer as a user using the register function provided in the code
+      // this will add the details from the volunteer form into the users table for that user and create a temp password
+      // mark application as approved and remove from pending list (this means code will probably need fixed to only show if status is pending)
     },
 
     denyApp(id) {
@@ -167,17 +157,18 @@ export default {
     toggleAllCheckboxes() {
       this.allSelected = !this.allSelected;
       this.selectedIDs = [];
-      // this code will need fixed once test data is removed
+      const apps = this.$store.state.apps;
+
       if (this.allSelected) {
-        this.testVolunteerApps.forEach((volunteer) => {
-          this.selectedIDs.push(volunteer.id);
+        apps.forEach((volunteer) => {
+          this.selectedIDs.push(volunteer.applicationID);
         });
       }
     },
 
     updateCheckboxes() {
-      // this code will need fixed once test data is removed
-      if (this.selectedIDs.length == this.testVolunteerApps.length) {
+      const apps = this.$store.state.apps;
+      if (this.selectedIDs.length == apps.length) {
         this.allSelected = true;
       } else {
         this.allSelected = false;

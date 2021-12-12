@@ -6,6 +6,7 @@ public class VolunteerApplication {
 
     private int applicationID;
     private int applicationStatusID;
+    private String applicationStatus;
     @NotBlank (message = "Name cannot be blank.")
     private  String name;
     @NotBlank (message = "Email cannot be blank.")
@@ -74,5 +75,13 @@ public class VolunteerApplication {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getApplicationStatus() {
+        return applicationStatus;
+    }
+
+    public void setApplicationStatus(String applicationStatus) {
+        this.applicationStatus = applicationStatus;
     }
 }

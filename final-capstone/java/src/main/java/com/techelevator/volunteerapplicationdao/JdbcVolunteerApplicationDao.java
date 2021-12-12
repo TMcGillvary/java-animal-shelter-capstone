@@ -6,6 +6,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class JdbcVolunteerApplicationDao implements VolunteerApplicationDao {
 
@@ -13,6 +16,20 @@ public class JdbcVolunteerApplicationDao implements VolunteerApplicationDao {
 
     public JdbcVolunteerApplicationDao(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Override
+    public List<VolunteerApplication> getAllApps() {
+        List<VolunteerApplication> apps = new ArrayList<>();
+        String sql = "SELECT app.application_id, app_s.application_status, app.name, app.email, app.phone, app.description " +
+                " FROM applications AS app " +
+                " JOIN application_status AS app_s ON app.application_status_id = app_s.application_status_id;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            VolunteerApplication volunteer = mapRowForPending(results);
+            apps.add(volunteer);
+        }
+        return apps;
     }
 
     @Override
@@ -49,8 +66,18 @@ public class JdbcVolunteerApplicationDao implements VolunteerApplicationDao {
         volunteerApplication.setPhone(results.getString("phone"));
         volunteerApplication.setDescription(results.getString("description"));
         return volunteerApplication;
-
-
     }
+
+    private VolunteerApplication mapRowForPending(SqlRowSet results) {
+        VolunteerApplication volunteerApplication = new VolunteerApplication();
+        volunteerApplication.setApplicationID(results.getInt("application_id"));
+        volunteerApplication.setApplicationStatus(results.getString("application_status"));
+        volunteerApplication.setName(results.getString("name"));
+        volunteerApplication.setEmail(results.getString("email"));
+        volunteerApplication.setPhone(results.getString("phone"));
+        volunteerApplication.setDescription(results.getString("description"));
+        return volunteerApplication;
+    }
+
 
 }

@@ -6,6 +6,10 @@ export default {
 
     submitForm(application) {
         return axios.post("/volunteerapplication", application)
+    },
+
+    getPendingApplications() {
+        return axios.get("/pendingappslist")
     }
 
 }
