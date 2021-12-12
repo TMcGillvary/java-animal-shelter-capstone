@@ -189,7 +189,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* styling all stolen from homework, will need fixed! 
 
 I am pretty sure I want to change all of this to a grid or a flexbox, gonna see if vue has a preference or whether it's better to leave as is */

@@ -1,6 +1,14 @@
 <template>
   <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
+    <div v-if="$store.state.token != ''">
+      Welcome, {{ $store.state.user.full_name }}
+    </div>
+
+    <form
+      class="form-signin"
+      @submit.prevent="login"
+      v-if="$store.state.token == ''"
+    >
       <!-- <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1> -->
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
