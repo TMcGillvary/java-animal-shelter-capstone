@@ -1,5 +1,6 @@
 <template>
   <div id="register" class="text-center">
+    <!--
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -37,6 +38,7 @@
         Create Account
       </button>
     </form>
+    -->
   </div>
 </template>
 
@@ -59,12 +61,22 @@ export default {
   },
   methods: {
     register() {
-      if (this.user.password != this.user.confirmPassword) {
+      const newUser = {
+        username: this.selectedApp.email,
+        password: "password",
+        confirmPassword: "password",
+        role: "user",
+        full_name: this.selectedApp.name,
+        email: this.selectedApp.email,
+        phone: this.selectedApp.phone,
+        has_logged_in: false,
+      };
+      if (newUser.password != newUser.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = "Password & Confirm Password do not match.";
       } else {
         authService
-          .register(this.user)
+          .register(newUser)
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
@@ -85,6 +97,13 @@ export default {
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = "There were problems registering this user.";
+    },
+  },
+  computed: {
+    selectedApp() {
+      return this.$store.state.apps.find(
+        (app) => app.applicationID == this.$route.params.id
+      );
     },
   },
 };

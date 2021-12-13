@@ -75,11 +75,18 @@
             <td>{{ volunteer.applicationStatus }}</td>
             <td>
               <!-- Approve the App (code not complete) -->
-              <button class="approve" v-on:click="approveApp(id)">
+
+              <button class="approve" v-on:click="approveApp(volunteer)">
                 Approve
               </button>
+
               <!-- Deny the App (code not complete) -->
-              <button class="deny" v-on:click="denyApp(id)">Deny</button>
+              <button
+                class="deny"
+                v-on:click="denyApp(volunteer.applicationID)"
+              >
+                Deny
+              </button>
             </td>
           </tr>
         </tbody>
@@ -112,6 +119,7 @@
 import HeaderArea from "@/components/HeaderArea.vue";
 import appService from "@/services/ApplicationService.js";
 import FooterArea from "@/components/FooterArea.vue";
+import authService from "../services/AuthService";
 
 export default {
   components: { HeaderArea, FooterArea },
@@ -131,10 +139,10 @@ export default {
     });
   },
   methods: {
-    approveApp(id) {
+    approveApp(volunteer) {
       // this is to allow code to compile, won't be in final code
-      return id;
       // fill in code here for approving app
+      this.register(volunteer);
       // if approved, we are going to register the volunteer as a user using the register function provided in the code
       // this will add the details from the volunteer form into the users table for that user and create a temp password
       // mark application as approved and remove from pending list (this means code will probably need fixed to only show if status is pending)
@@ -173,6 +181,45 @@ export default {
       } else {
         this.allSelected = false;
       }
+    },
+
+    register(volunteer) {
+      const newUser = {
+        username: volunteer.email,
+        password: "password",
+        confirmPassword: "password",
+        role: "user",
+        full_name: volunteer.name,
+        email: volunteer.email,
+        phone: volunteer.phone,
+        has_logged_in: false,
+      };
+      if (newUser.password != newUser.confirmPassword) {
+        this.registrationErrors = true;
+        this.registrationErrorMsg = "Password & Confirm Password do not match.";
+      } else {
+        authService
+          .register(newUser)
+          .then((response) => {
+            if (response.status == 201) {
+              this.$router.push({
+                path: "/login",
+                query: { registration: "success" },
+              });
+            }
+          })
+          .catch((error) => {
+            const response = error.response;
+            this.registrationErrors = true;
+            if (response.status === 400) {
+              this.registrationErrorMsg = "Bad Request: Validation Errors";
+            }
+          });
+      }
+    },
+    clearErrors() {
+      this.registrationErrors = false;
+      this.registrationErrorMsg = "There were problems registering this user.";
     },
   },
 
