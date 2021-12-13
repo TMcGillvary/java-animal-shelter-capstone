@@ -14,4 +14,6 @@ public interface VolunteerApplicationDao {
 
     public void approveAppStatus(VolunteerApplication volunteer);
 
+    public void denyAppStatus(VolunteerApplication volunteer);
+
 }

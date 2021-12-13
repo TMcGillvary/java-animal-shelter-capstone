@@ -27,9 +27,14 @@ public class VolunteerApplicationController {
         return jdbcVolunteerApplicationDao.getAllApps();
     }
 
-    @RequestMapping(path = "/update-app-status", method = RequestMethod.PUT)
+    @RequestMapping(path = "/approve-app-status", method = RequestMethod.PUT)
     public void approveAppStatus(@RequestBody VolunteerApplication volunteer) {
         jdbcVolunteerApplicationDao.approveAppStatus(volunteer);
+    }
+
+    @RequestMapping(path = "/deny-app-status", method = RequestMethod.PUT)
+    public void denyAppStatus(@RequestBody VolunteerApplication volunteer) {
+        jdbcVolunteerApplicationDao.denyAppStatus(volunteer);
     }
 
     @RequestMapping(path = "/volunteerapplication", method = RequestMethod.POST)

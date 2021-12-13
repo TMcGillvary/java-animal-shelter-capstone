@@ -2,6 +2,9 @@
   <div class="pending-volunteer-list">
     <header-area />
     <div class="container">
+      <div class="status-message success" v-show="message !== ''">
+        {{ message }}
+      </div>
       <table id="tblUsers">
         <thead>
           <tr>
@@ -53,7 +56,7 @@
           --></tr>
 
           <tr
-            v-for="volunteer in $store.state.apps"
+            v-for="volunteer in filteredLists"
             v-bind:key="volunteer.applicationID"
           >
             <td>
@@ -74,19 +77,14 @@
             <td>{{ volunteer.description }}</td>
             <td>{{ volunteer.applicationStatus }}</td>
             <td>
-              <!-- Approve the App (code not complete) -->
+              <!-- Approve the App -->
 
               <button class="approve" v-on:click="approveApp(volunteer)">
                 Approve
               </button>
 
               <!-- Deny the App (code not complete) -->
-              <button
-                class="deny"
-                v-on:click="denyApp(volunteer.applicationID)"
-              >
-                Deny
-              </button>
+              <button class="deny" v-on:click="denyApp(volunteer)">Deny</button>
             </td>
           </tr>
         </tbody>
@@ -131,6 +129,7 @@ export default {
       allSelected: false,
       // this is to select apps to approve/deny
       selectedIDs: [],
+      message: "",
     };
   },
   created() {
@@ -146,6 +145,7 @@ export default {
       appService.approveApp(volunteer).then((response) => {
         if (response.status === 200) {
           document.location.reload(true);
+          this.message = "Successfully approved application!";
         } else {
           // fail!
         }
@@ -154,10 +154,17 @@ export default {
       // mark application as approved and remove from pending list (this means code will probably need fixed to only show if status is pending)
     },
 
-    denyApp(id) {
-      // this is to allow code to compile, won't be in final code
-      return id;
-      // fill in code here for denying app
+    denyApp(volunteer) {
+      appService.denyApp(volunteer).then((response) => {
+        if (response.status === 200) {
+          document.location.reload(true);
+          this.message = "Successfully denied application!";
+        } else {
+          //fail
+        }
+
+        // fill in code here for denying app
+      });
     },
 
     approveSelectedApps() {
@@ -208,6 +215,7 @@ export default {
           .register(newUser)
           .then((response) => {
             if (response.status == 201) {
+              this.message = "Successfully approved application!";
               // success!
             }
           })
@@ -234,6 +242,13 @@ export default {
       } else {
         return true;
       }
+    },
+
+    filteredLists() {
+      let filteredVolunteers = this.$store.state.apps.filter(
+        (volunteer) => volunteer.applicationStatus === "Pending"
+      );
+      return filteredVolunteers;
     },
   },
 };

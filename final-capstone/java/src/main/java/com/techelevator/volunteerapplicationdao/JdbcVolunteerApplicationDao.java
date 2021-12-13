@@ -46,6 +46,14 @@ public class JdbcVolunteerApplicationDao implements VolunteerApplicationDao {
     }
 
     @Override
+    public void denyAppStatus(VolunteerApplication volunteer) {
+        String sql = "UPDATE applications SET application_status_id = " +
+                " (SELECT application_status_id FROM application_status WHERE application_status = 'Denied') " +
+                " WHERE application_id = ?;";
+        jdbcTemplate.update(sql, volunteer.getApplicationID());
+    }
+
+    @Override
     public VolunteerApplication getVolunteerApplicationById(int newId){
         String sql = "SELECT application_id, application_status_id, name, email, phone, description" +
                 " FROM applications" +

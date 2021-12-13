@@ -13,7 +13,11 @@ export default {
     },
 
     approveApp(volunteer) {
-        return axios.put("/update-app-status", volunteer);
+        return axios.put("/approve-app-status", volunteer);
+    },
+
+    denyApp(volunteer) {
+        return axios.put("/deny-app-status", volunteer);
     }
 
 }
