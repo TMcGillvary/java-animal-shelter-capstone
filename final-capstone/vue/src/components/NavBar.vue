@@ -8,19 +8,13 @@
     >&nbsp;|&nbsp; <a href="#" class="links">About</a>&nbsp;|&nbsp;
     <router-link v-bind:to="{ name: 'volunteer-form' }" class="links"
       >Volunteer</router-link
-    >&nbsp;|&nbsp;
-    <router-link
-      v-bind:to="{ name: 'logout' }"
-      v-if="$store.state.token != ''"
-      class="links"
-      >Logout</router-link
-    >
-    <router-link
-      :to="{ name: 'register' }"
-      v-if="$store.state.token == ''"
-      class="links"
-      >Need an account?</router-link
-    >
+    >&nbsp;
+    <div class="inline" v-if="$store.state.token != ''">
+      |&nbsp;
+      <router-link v-bind:to="{ name: 'logout' }" class="links"
+        >Logout</router-link
+      >
+    </div>
   </div>
 </template>
 
@@ -49,5 +43,9 @@ a:hover {
 
 a.router-link-active {
   color: #6b23a8;
+}
+
+.inline {
+  display: inline-block;
 }
 </style>
