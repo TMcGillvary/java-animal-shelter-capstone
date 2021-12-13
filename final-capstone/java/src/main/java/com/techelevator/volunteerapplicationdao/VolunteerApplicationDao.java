@@ -12,4 +12,6 @@ public interface VolunteerApplicationDao {
 
     public List<VolunteerApplication> getAllApps();
 
+    public void approveAppStatus(VolunteerApplication volunteer);
+
 }

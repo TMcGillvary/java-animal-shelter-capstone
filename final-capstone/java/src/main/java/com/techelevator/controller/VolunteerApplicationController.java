@@ -1,13 +1,11 @@
 package com.techelevator.controller;
 
-import com.techelevator.petdao.JdbcPetDao;
-import com.techelevator.petmodel.Pet;
 import com.techelevator.volunteerapplicationdao.JdbcVolunteerApplicationDao;
 import com.techelevator.volunteerapplicationmodel.VolunteerApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 @RestController
 @CrossOrigin
 public class VolunteerApplicationController {
@@ -27,6 +25,11 @@ public class VolunteerApplicationController {
     @GetMapping(path = "/pendingappslist")
     public List<VolunteerApplication> getAllPendingApps() {
         return jdbcVolunteerApplicationDao.getAllApps();
+    }
+
+    @RequestMapping(path = "/update-app-status", method = RequestMethod.PUT)
+    public void approveAppStatus(@RequestBody VolunteerApplication volunteer) {
+        jdbcVolunteerApplicationDao.approveAppStatus(volunteer);
     }
 
     @RequestMapping(path = "/volunteerapplication", method = RequestMethod.POST)

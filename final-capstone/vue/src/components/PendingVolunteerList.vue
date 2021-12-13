@@ -143,8 +143,14 @@ export default {
       // this is to allow code to compile, won't be in final code
       // fill in code here for approving app
       this.register(volunteer);
-      // if approved, we are going to register the volunteer as a user using the register function provided in the code
-      // this will add the details from the volunteer form into the users table for that user and create a temp password
+      appService.approveApp(volunteer).then((response) => {
+        if (response.status === 200) {
+          document.location.reload(true);
+        } else {
+          // fail!
+        }
+      });
+
       // mark application as approved and remove from pending list (this means code will probably need fixed to only show if status is pending)
     },
 
@@ -202,10 +208,7 @@ export default {
           .register(newUser)
           .then((response) => {
             if (response.status == 201) {
-              this.$router.push({
-                path: "/login",
-                query: { registration: "success" },
-              });
+              // success!
             }
           })
           .catch((error) => {

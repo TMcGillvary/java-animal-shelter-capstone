@@ -10,6 +10,10 @@ export default {
 
     getPendingApplications() {
         return axios.get("/pendingappslist")
+    },
+
+    approveApp(volunteer) {
+        return axios.put("/update-app-status", volunteer);
     }
 
 }

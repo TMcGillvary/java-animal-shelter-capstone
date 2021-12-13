@@ -1,10 +1,10 @@
 package com.techelevator.volunteerapplicationdao;
 
-import com.techelevator.petmodel.Pet;
 import com.techelevator.volunteerapplicationmodel.VolunteerApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +30,18 @@ public class JdbcVolunteerApplicationDao implements VolunteerApplicationDao {
             apps.add(volunteer);
         }
         return apps;
+    }
+
+    /**
+     * Update an application status to be approved in the DB
+     * @param volunteer the application to update
+     */
+    @Override
+    public void approveAppStatus(VolunteerApplication volunteer) {
+        String sql = "UPDATE applications SET application_status_id = " +
+                " (SELECT application_status_id FROM application_status WHERE application_status = 'Approved') " +
+                " WHERE application_id = ?;";
+        jdbcTemplate.update(sql, volunteer.getApplicationID());
     }
 
     @Override
