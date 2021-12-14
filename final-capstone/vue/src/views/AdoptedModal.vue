@@ -22,10 +22,10 @@
         <section class="modal-body" id="modalDescription">
           <slot name="body">
             <div>
-              <img src="@/assets/congrats1.png" />
+              <img src="@/assets/congrats1-1.png" />
             </div>
             <div>
-              <img src="@/assets/adopt2.png" />
+              <img src="@/assets/adopt2.png" width="200px" />
             </div>
             <div>
               <button @click="start">Start</button>

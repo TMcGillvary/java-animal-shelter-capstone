@@ -2,7 +2,7 @@
   <div id="pets-display">
     <pet-card
       id="pet-card"
-      v-for="pet in $store.state.pets"
+      v-for="pet in filteredList"
       v-bind:key="pet.id"
       v-bind:pet="pet"
     />
@@ -21,6 +21,14 @@ export default {
     petServices.displayPets().then((response) => {
       this.$store.state.pets = response.data;
     });
+  },
+  computed: {
+    filteredList() {
+      let adoptablePets = this.$store.state.pets.filter(
+        (pet) => pet.is_adoptable === true
+      );
+      return adoptablePets;
+    },
   },
 };
 </script>

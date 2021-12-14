@@ -5,7 +5,12 @@
     <br />
     <br />
     <router-link v-bind:to="{ name: 'home' }" class="links">Home</router-link
-    >&nbsp;|&nbsp; <a href="#" class="links">About</a>&nbsp;|&nbsp;
+    >&nbsp;|&nbsp;
+    <router-link v-bind:to="{ name: 'adopted-pets' }" class="links"
+      >Adopted Pets</router-link
+    >
+    <!-- this will need changed to adopted pets page -->
+    &nbsp;|&nbsp;
     <router-link v-bind:to="{ name: 'volunteer-form' }" class="links"
       >Volunteer</router-link
     >&nbsp;

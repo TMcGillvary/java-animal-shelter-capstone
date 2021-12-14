@@ -10,6 +10,7 @@ import AddPet from '@/components/AddPet.vue'
 import UpdatePet from '@/components/UpdatePet.vue'
 import VolunteerDirectory from '@/components/VolunteerDirectory.vue'
 import PendingVolunteerList from "@/components/PendingVolunteerList.vue"
+import AdoptedPetsDisplay from "@/components/AdoptedPetsDisplay.vue"
 
 Vue.use(Router)
 
@@ -30,10 +31,14 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
-
-      //    meta: {
-      //      requiresAuth: true
-      //    }
+    },
+    {
+      path: "/adopted-pets",
+      name: "adopted-pets",
+      component: AdoptedPetsDisplay,
+      meta: {
+        requiresAuth: false
+      }
     },
     {
       path: "/login",
@@ -66,11 +71,6 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    },
-    {
-      path: '/welcome',
-      name: 'adopt-pet-test',
-      component: () => new Promise(resolve => setTimeout(() => resolve(AddPet), 725)),
     },
     {
       path: "/add-pet",
