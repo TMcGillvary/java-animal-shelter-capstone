@@ -24,7 +24,7 @@ export default new Vuex.Store({
     pets: [],
     /* for getPendingApplications() */
     apps: [],
-
+    users: [],
     newPet: {
       ID: 0,
       name: "",

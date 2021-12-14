@@ -38,4 +38,36 @@ export default {};
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "add directory";
 }
+
+table {
+  margin: 20px auto 20px;
+}
+
+th {
+  text-transform: uppercase;
+}
+
+td {
+  padding: 10px;
+}
+
+input,
+select {
+  font-size: 16px;
+}
+
+form {
+  margin: 20px;
+  width: 350px;
+}
+
+.field {
+  padding: 10px 0px;
+}
+
+label {
+  width: 140px;
+  display: inline-block;
+}
+
 </style>
