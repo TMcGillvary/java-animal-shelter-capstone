@@ -16,7 +16,7 @@
             <td>{{ user.full_name }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.phone }}</td>
-            <td>{{ user.authorities.name }}</td>
+            <td>{{ user.authorities[0].name }}</td>
           </tr>
         </tbody>
       </table>
