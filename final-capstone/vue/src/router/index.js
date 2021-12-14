@@ -68,12 +68,18 @@ const router = new Router({
       }
     },
     {
+      path: '/welcome',
+      name: 'adopt-pet-test',
+      component: () => new Promise(resolve => setTimeout(() => resolve(AddPet), 725)),
+    },
+    {
       path: "/add-pet",
       name: "add-pet",
       component: AddPet,
       meta: {
         requiresAuth: true
-      }
+      },
+
     },
     {
       path: "/update-pet/:id",
