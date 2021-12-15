@@ -46,4 +46,9 @@ public class PetController {
         jdbcPetDao.updatePetListing(pet);
     }
 
+    @RequestMapping(path = "/adoptpet", method = RequestMethod.PUT)
+    public void adoptPet(@RequestBody Pet pet) {
+        jdbcPetDao.updatePetListing(pet);
+    }
+
 }

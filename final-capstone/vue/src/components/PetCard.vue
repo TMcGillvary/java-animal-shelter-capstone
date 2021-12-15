@@ -8,7 +8,7 @@
     <p>Type: {{ pet.pet_type }}</p>
     <p>Breed: {{ pet.breed }}</p>
 
-    <button type="button" class="confetti-button" @click="showModal">
+    <button type="button" class="confetti-button" @click="adoptPet">
       Adopt!
     </button>
 
@@ -28,6 +28,7 @@
 import Vue from "vue";
 import modal from "@/views/AdoptedModal.vue";
 import VueConfetti from "vue-confetti";
+import PetService from "@/services/PetServices.js";
 
 Vue.use(VueConfetti);
 
@@ -66,6 +67,47 @@ export default {
     };
   },
   methods: {
+    //this is the method to adopt a pet and flips is adoptable
+    adoptPet() {
+      const pet = {
+          pet_id: this.pet.pet_id,
+        name: this.pet.name,
+        description: this.pet.description,
+        is_adoptable: false,
+        pic: this.pet.pic,
+        breed: this.pet.breed,
+        pet_type: this.pet.pet_type,
+    }
+    PetService.adoptPet(pet).then((response) =>{
+      if (response.status === 200) {
+        this.start();
+        this.showModal();
+      }
+    })
+    .catch((error) => {
+          this.handleErrorResponse(error, "adopting");
+        });
+        
+    },
+
+     handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.message =
+          "Error " +
+          verb +
+          " form. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.message = "Error " + verb + " form. Server could not be reached.";
+      } else {
+        this.message = "Error " + verb + " form. Request could not be created.";
+      }
+    },
+
+
+
+    //this is the start of the confetti stuff 
      start() {
       this.$confetti.start({
         particles: [
@@ -104,10 +146,10 @@ export default {
     stop() {
       this.$confetti.stop();
     },
-
+  //this opens and closes the modal and starts and stops confetti
     showModal() {
       this.isModalVisible = true;
-      this.start();
+      
     },
     closeModal() {
       this.stop();

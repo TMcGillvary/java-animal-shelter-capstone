@@ -16,5 +16,7 @@ export default {
     },
     // // do we need to map petPetById?
     // getPetById()
-
+    adoptPet(pet) {
+        return axios.put('/adoptpet', pet)
+    },
 }
