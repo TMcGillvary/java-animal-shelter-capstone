@@ -8,7 +8,12 @@
     <p>Type: {{ pet.pet_type }}</p>
     <p>Breed: {{ pet.breed }}</p>
 
-    <button type="button" class="confetti-button" @click="adoptPet" v-if="pet.is_adoptable===true">
+    <button
+      type="button"
+      class="confetti-button"
+      @click="adoptPet"
+      v-if="pet.is_adoptable === true"
+    >
       Adopt!
     </button>
 
@@ -60,7 +65,7 @@ export default {
   components: {
     modal,
   },
-    
+
   data() {
     return {
       isModalVisible: false,
@@ -70,27 +75,27 @@ export default {
     //this is the method to adopt a pet and flips is adoptable
     adoptPet() {
       const pet = {
-          pet_id: this.pet.pet_id,
+        pet_id: this.pet.pet_id,
         name: this.pet.name,
         description: this.pet.description,
         is_adoptable: false,
         pic: this.pet.pic,
         breed: this.pet.breed,
         pet_type: this.pet.pet_type,
-    }
-    PetService.adoptPet(pet).then((response) =>{
-      if (response.status === 200) {
-        this.start();
-        this.showModal();
-      }
-    })
-    .catch((error) => {
+      };
+      PetService.adoptPet(pet)
+        .then((response) => {
+          if (response.status === 200) {
+            this.start();
+            this.showModal();
+          }
+        })
+        .catch((error) => {
           this.handleErrorResponse(error, "adopting");
         });
-        
     },
 
-     handleErrorResponse(error, verb) {
+    handleErrorResponse(error, verb) {
       if (error.response) {
         this.message =
           "Error " +
@@ -105,10 +110,8 @@ export default {
       }
     },
 
-
-
-    //this is the start of the confetti stuff 
-     start() {
+    //this is the start of the confetti stuff
+    start() {
       this.$confetti.start({
         particles: [
           {
@@ -146,14 +149,14 @@ export default {
     stop() {
       this.$confetti.stop();
     },
-  //this opens and closes the modal and starts and stops confetti
+    //this opens and closes the modal and starts and stops confetti
     showModal() {
       this.isModalVisible = true;
-      
     },
     closeModal() {
       this.stop();
       this.isModalVisible = false;
+      document.location.reload(true);
     },
   },
 };

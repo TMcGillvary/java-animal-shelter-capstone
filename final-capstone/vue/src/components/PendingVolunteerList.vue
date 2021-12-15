@@ -1,6 +1,7 @@
 <template>
   <div class="pending-volunteer-list">
     <header-area />
+    <logged-in-view />
     <div class="container">
       <div class="status-message success" v-show="message !== ''">
         {{ message }}
@@ -118,9 +119,10 @@ import HeaderArea from "@/components/HeaderArea.vue";
 import appService from "@/services/ApplicationService.js";
 import FooterArea from "@/components/FooterArea.vue";
 import authService from "../services/AuthService";
+import LoggedInView from "../views/LoggedInView.vue";
 
 export default {
-  components: { HeaderArea, FooterArea },
+  components: { HeaderArea, FooterArea, LoggedInView },
 
   name: "pending-volunteer-list",
   data() {
