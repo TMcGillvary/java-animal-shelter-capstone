@@ -76,6 +76,7 @@ INSERT INTO users (username, password_hash, role, full_name, email, phone, has_l
 INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Roy','Daveville''s Dog', 'https://i.postimg.cc/rs5qcCqw/dog1.png', 'the cutest pupper', 'squirrel');
 INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Dave','Mayor of Daveville', 'https://i.postimg.cc/C13wW6T2/dog2.png', 'mayorial dog', 'government');
 INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Tyson','Leader of the Cigar Party', 'https://www.murderati.com/storage/squirrel-smoke.jpg?__SQUARESPACE_CACHEVERSION=1256940730989', 'ringleader', 'badass squirrel');
+INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Tramp', 'He''s a tramp but we love him', 'https://content.internetvideoarchive.com/content/hdphotos/12623/012623/012623_1280x720_105964_020.jpg', 'mutt', 'dog');
 
 INSERT INTO application_status (application_status_id, application_status) VALUES (1, 'Pending');
 INSERT INTO application_status (application_status_id, application_status) VALUES (2, 'Approved');
