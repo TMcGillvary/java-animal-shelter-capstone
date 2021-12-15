@@ -25,7 +25,11 @@
 </template>
 
 <script>
+import Vue from "vue";
 import modal from "@/views/AdoptedModal.vue";
+import VueConfetti from "vue-confetti";
+
+Vue.use(VueConfetti);
 
 export default {
   name: "pet-card",
@@ -55,17 +59,58 @@ export default {
   components: {
     modal,
   },
-
+    
   data() {
     return {
       isModalVisible: false,
     };
   },
   methods: {
+     start() {
+      this.$confetti.start({
+        particles: [
+          {
+            type: "heart",
+            colors: ["red", "pink"],
+            size: 25,
+            dropRate: 20,
+          },
+          {
+            type: "circle",
+            colors: [
+              "DodgerBlue",
+              "OliveDrab",
+              "Gold",
+              "SlateBlue",
+              "lightblue",
+              "Violet",
+              "PaleGreen",
+              "SteelBlue",
+              "SandyBrown",
+              "Chocolate",
+            ],
+          },
+          {
+            type: "rect",
+            size: 15,
+          },
+        ],
+        defaultDropRate: 15,
+        defaultSize: 10,
+        windSpeedMax: 5,
+      });
+    },
+
+    stop() {
+      this.$confetti.stop();
+    },
+
     showModal() {
       this.isModalVisible = true;
+      this.start();
     },
     closeModal() {
+      this.stop();
       this.isModalVisible = false;
     },
   },

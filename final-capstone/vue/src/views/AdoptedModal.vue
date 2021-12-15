@@ -24,19 +24,13 @@
             <div>
               <img src="@/assets/congrats1-1.png" />
             </div>
-            <div>
-              <img src="@/assets/adopt2.png" width="200px" />
-            </div>
-            <div>
-              <button @click="start">Start</button>
-              <button @click="stop">Stop</button>
-              <button @click="love">Show some love</button>
-            </div>
+           
+            
           </slot>
         </section>
 
         <footer class="modal-footer">
-          <slot name="footer"> This is the default footer! </slot>
+          
           <button
             type="button"
             class="btn-green"
@@ -52,10 +46,6 @@
 </template>
 
 <script>
-import Vue from "vue";
-import VueConfetti from "vue-confetti";
-
-Vue.use(VueConfetti);
 
 export default {
   name: "Modal",
@@ -65,58 +55,7 @@ export default {
     },
 
     // this is the code for confetti
-    start() {
-      this.$confetti.start({
-        particles: [
-          {
-            type: "heart",
-            colors: ["red", "pink"],
-            size: 25,
-            dropRate: 20,
-          },
-          {
-            type: "circle",
-            colors: [
-              "DodgerBlue",
-              "OliveDrab",
-              "Gold",
-              "SlateBlue",
-              "lightblue",
-              "Violet",
-              "PaleGreen",
-              "SteelBlue",
-              "SandyBrown",
-              "Chocolate",
-            ],
-          },
-          {
-            type: "rect",
-            size: 15,
-          },
-        ],
-        defaultDropRate: 15,
-        defaultSize: 10,
-        windSpeedMax: 5,
-      });
-    },
-
-    stop() {
-      this.$confetti.stop();
-    },
-
-    love() {
-      this.$confetti.update({
-        particles: [
-          {
-            type: "heart",
-          },
-          {
-            type: "circle",
-          },
-        ],
-        defaultColors: ["red", "pink", "#ba0000"],
-      });
-    },
+   
   },
 };
 </script>
