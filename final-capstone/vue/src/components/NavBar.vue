@@ -1,24 +1,29 @@
 <template>
-  <div id="nav">
+  <div id="nav-bar-flex">
     <login />
-    <br />
-    <br />
-    <br />
-    <router-link v-bind:to="{ name: 'home' }" class="links">Home</router-link
-    >&nbsp;|&nbsp;
-    <router-link v-bind:to="{ name: 'adopted-pets' }" class="links"
-      >Adopted Pets</router-link
-    >
-    <!-- this will need changed to adopted pets page -->
-    &nbsp;|&nbsp;
-    <router-link v-bind:to="{ name: 'volunteer-form' }" class="links"
-      >Volunteer</router-link
-    >&nbsp;
-    <div class="inline" v-if="$store.state.token != ''">
-      |&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" class="links"
-        >Logout</router-link
+
+    <div class="links-area">
+      <router-link v-bind:to="{ name: 'home' }" class="links">Home</router-link>
+
+      &nbsp;|&nbsp;
+
+      <router-link v-bind:to="{ name: 'adopted-pets' }" class="links"
+        >Adopted Pets</router-link
       >
+
+      &nbsp;|&nbsp;
+
+      <router-link v-bind:to="{ name: 'volunteer-form' }" class="links"
+        >Volunteer</router-link
+      >
+      &nbsp;
+
+      <div class="inline" v-if="$store.state.token != ''">
+        |&nbsp;
+        <router-link v-bind:to="{ name: 'logout' }" class="links"
+          >Logout</router-link
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +39,20 @@ export default {
 </script>
 
 <style>
+#nav-bar-flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;
+}
+
+.links-area {
+  font-size: 1.5rem;
+}
+
 a.links {
   text-decoration: none;
   color: #000;

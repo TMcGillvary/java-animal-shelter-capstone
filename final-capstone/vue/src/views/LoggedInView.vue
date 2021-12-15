@@ -21,7 +21,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 #add {
   grid-area: add;
 }
@@ -69,5 +69,4 @@ label {
   width: 140px;
   display: inline-block;
 }
-
 </style>

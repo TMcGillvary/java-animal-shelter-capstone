@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <div v-if="$store.state.token != ''">
-      Welcome, {{ $store.state.user.full_name }}
+      <h1>Welcome, {{ $store.state.user.full_name }}</h1>
     </div>
 
     <form
@@ -23,7 +23,7 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">P: </label>
+
       <input
         type="password"
         id="password"
@@ -74,3 +74,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.form-control {
+  margin: 5px;
+}
+</style>
