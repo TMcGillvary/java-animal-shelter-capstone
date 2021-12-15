@@ -8,7 +8,7 @@
     <p>Type: {{ pet.pet_type }}</p>
     <p>Breed: {{ pet.breed }}</p>
 
-    <button type="button" class="confetti-button" @click="adoptPet">
+    <button type="button" class="confetti-button" @click="adoptPet" v-if="pet.is_adoptable===true">
       Adopt!
     </button>
 
