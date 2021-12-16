@@ -70,8 +70,12 @@ CREATE TABLE applications (
   );
 
 
-INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'Test Testerson', 'test@test.com', '123-111-2222', false);
+-- INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'Test Testerson', 'test@test.com', '123-111-2222', false);
 INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Admin Adminson', 'admin@admin.com', '333-444-5555', true);
+INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('tiffany','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Tiffany McGillvary', 'tiffany@daveanimalshelter.com', '888-867-5309', true);
+INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('drew','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Drew Atkins', 'drew@daveanimalshelter.com', '888-867-5309', true);
+INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('angela','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Angela Livezey', 'angela@daveanimalshelter.com', '888-867-5309', true);
+INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('ren','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'Ren Lewis', 'ren@daveanimalshelter.com', '888-867-5309', false);
 
 INSERT INTO application_status (application_status_id, application_status) VALUES (1, 'Pending');
 INSERT INTO application_status (application_status_id, application_status) VALUES (2, 'Approved');

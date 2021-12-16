@@ -9,7 +9,7 @@
       <table id="tblUsers">
         <thead>
           <tr>
-            <th>&nbsp;</th>
+            <!-- <th>&nbsp;</th> -->
             <th>Volunteer Name</th>
             <th>Email Address</th>
             <th>Phone #</th>
@@ -60,8 +60,7 @@
             v-for="volunteer in filteredLists"
             v-bind:key="volunteer.applicationID"
           >
-            <td>
-              <!-- <td>
+            <!-- <td>
                <input
                 type="checkbox"
                 v-bind:id="volunteer.applicationID"
@@ -73,7 +72,6 @@
                 v-bind:change="updateCheckboxes()"
               />
             </td> -->
-            </td>
             <td>{{ volunteer.name }}</td>
             <td>{{ volunteer.email }}</td>
             <td>{{ volunteer.phone }}</td>
@@ -265,6 +263,7 @@ I am pretty sure I want to change all of this to a grid or a flexbox, gonna see 
 table {
   margin: 20px auto 20px;
   width: 75%;
+  table-layout: fixed;
 }
 
 th {
