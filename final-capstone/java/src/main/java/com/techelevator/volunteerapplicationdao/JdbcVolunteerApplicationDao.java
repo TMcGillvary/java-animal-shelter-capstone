@@ -24,7 +24,7 @@ public class JdbcVolunteerApplicationDao implements VolunteerApplicationDao {
         String sql = "SELECT app.application_id, app_s.application_status, app.name, app.email, app.phone, app.description " +
                 " FROM applications AS app " +
                 " JOIN application_status AS app_s ON app.application_status_id = app_s.application_status_id" +
-                " ORDER BY app.application_id asc;";
+                " ORDER BY app.application_id DESC;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             VolunteerApplication volunteer = mapRowForPending(results);
