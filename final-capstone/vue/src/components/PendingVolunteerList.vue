@@ -10,26 +10,26 @@
         <thead>
           <tr>
             <!-- <th>&nbsp;</th> -->
-            <th>Volunteer Name</th>
-            <th>Email Address</th>
-            <th>Phone #</th>
-            <th>Reason For Applying</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th class="row-name">Volunteer Name</th>
+            <th class="row-email">Email Address</th>
+            <th class="row-phone">Phone #</th>
+            <th class="row-desc">Reason For Applying</th>
+            <th class="row-status">Status</th>
+            <th class="row-action">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <!-- <input
+          <!-- <tr> -->
+          <!-- <td>
+              <input
                 type="checkbox"
                 id="selectAll"
                 v-model="allSelected"
                 v-on:click="toggleAllCheckboxes()"
-              /> -->
-            </td>
-            <!-- None of this is working right now... leaving to come back to later -->
-            <!--
+              /> 
+            </td> -->
+          <!-- None of this is working right now... leaving to come back to later -->
+          <!--
           <td>
             <input
               type="text"
@@ -54,7 +54,8 @@
             </select>
           </td>
           <td>&nbsp;</td>
-          --></tr>
+          -->
+          <!-- </tr> -->
 
           <tr
             v-for="volunteer in filteredLists"
@@ -169,13 +170,13 @@ export default {
       });
     },
 
-    approveSelectedApps() {
-      // fill in code here for approving all selected apps
-    },
+    // approveSelectedApps() {
+    //   // fill in code here for approving all selected apps
+    // },
 
-    denySelectedApps() {
-      // fill in code here for denying all selected apps
-    },
+    // denySelectedApps() {
+    //   // fill in code here for denying all selected apps
+    // },
 
     toggleAllCheckboxes() {
       this.allSelected = !this.allSelected;
@@ -257,9 +258,8 @@ export default {
 </script>
 
 <style scoped>
-/* styling all stolen from homework, will need fixed! 
+/* Styling for Pending Application */
 
-I am pretty sure I want to change all of this to a grid or a flexbox, gonna see if vue has a preference or whether it's better to leave as is */
 table {
   margin: 20px auto 20px;
   width: 75%;
@@ -272,27 +272,32 @@ th {
 }
 
 td {
-  padding: 10px 0px 10px;
+  padding: 10px 10px 10px 0px;
 }
 
-input,
-select {
-  font-size: 16px;
+/* Styling for each column */
+
+.row-name {
+  width: 15%;
 }
 
-form {
-  margin: 20px;
-  width: 350px;
+.row-email {
+  width: 18%;
 }
 
-.field {
-  padding: 10px 0px;
+.row-phone {
+  width: 10%;
 }
 
-label {
-  width: 140px;
-  display: inline-block;
+.row-desc {
+  width: 35%;
 }
+
+.row-status {
+  width: 6%;
+}
+
+/* Styling for the approve/deny all buttons, currently unused */
 
 button {
   margin-right: 5px;

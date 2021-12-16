@@ -69,18 +69,20 @@ CREATE TABLE applications (
   CONSTRAINT FK_application_status_id FOREIGN KEY (application_status_id) REFERENCES application_status (application_status_id)
   );
 
-
+/* Users to insert, user and Drew's account commented out for demo purposes */
 -- INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'Test Testerson', 'test@test.com', '123-111-2222', false);
 INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Admin Adminson', 'admin@admin.com', '333-444-5555', true);
 INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('tiffany','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Tiffany McGillvary', 'tiffany@daveanimalshelter.com', '888-867-5309', true);
-INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('drew','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Drew Atkins', 'drew@daveanimalshelter.com', '888-867-5309', true);
+-- INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('drew','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Drew Atkins', 'drew@daveanimalshelter.com', '888-867-5309', true);
 INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('angela','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Angela Livezey', 'angela@daveanimalshelter.com', '888-867-5309', true);
 INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('ren','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'Ren Lewis', 'ren@daveanimalshelter.com', '888-867-5309', false);
 
+/* Application Statuses, DO NOT CHANGE */
 INSERT INTO application_status (application_status_id, application_status) VALUES (1, 'Pending');
 INSERT INTO application_status (application_status_id, application_status) VALUES (2, 'Approved');
 INSERT INTO application_status (application_status_id, application_status) VALUES (3, 'Denied');
 
+/* Dummy application data */
 INSERT INTO applications (application_status_id, name, email, phone, description) VALUES ('1', 'Peggy Sue', 'peggy.sue@gmail.com', '513-123-4567', 'I am only a test');
 INSERT INTO applications (application_status_id, name, email, phone, description) VALUES ('1', 'Johnny Cash', 'cash4cash@gmail.com', '123-421-9999', 'Folsom Prison Blues makes me good with animals');
 insert into applications (application_status_id, name, email, phone, description) values ('1', 'Haleigh Jenny', 'hjenny0@linkedin.com', '588-610-3567', 'Pick me.');
