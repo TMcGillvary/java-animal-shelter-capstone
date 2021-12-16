@@ -170,7 +170,7 @@ export default {
 }
 
 .img-container img {
-  width: 80%;
+  width: 375px;
   height: 100%;
   object-fit: cover;
   object-position: center;
