@@ -264,14 +264,16 @@ export default {
 I am pretty sure I want to change all of this to a grid or a flexbox, gonna see if vue has a preference or whether it's better to leave as is */
 table {
   margin: 20px auto 20px;
+  width: 75%;
 }
 
 th {
   text-transform: uppercase;
+  text-align: left;
 }
 
 td {
-  padding: 10px;
+  padding: 10px 0px 10px;
 }
 
 input,

@@ -4,7 +4,7 @@
       <img v-bind:src="pet.pic" />
     </div>
     <h2>{{ pet.name }}</h2>
-    <p>{{ pet.description }}</p>
+    <p class="desc">{{ pet.description }}</p>
     <p>Type: {{ pet.pet_type }}</p>
     <p>Breed: {{ pet.breed }}</p>
 
@@ -177,6 +177,12 @@ export default {
 }
 .button-style {
   border: none;
+}
+
+.desc {
+  width: 375px;
+  margin: auto;
+  text-align: center;
 }
 
 /************************************

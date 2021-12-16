@@ -58,14 +58,16 @@ export default {
 <style scoped>
 table {
   margin: 20px auto 20px;
+  width: 75%;
 }
 
 th {
   text-transform: uppercase;
+  text-align: left;
 }
 
 td {
-  padding: 10px;
+  padding: 10px 0px 10px;
 }
 
 input,
