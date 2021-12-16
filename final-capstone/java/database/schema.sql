@@ -73,16 +73,33 @@ CREATE TABLE applications (
 INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'Test Testerson', 'test@test.com', '123-111-2222', false);
 INSERT INTO users (username, password_hash, role, full_name, email, phone, has_logged_in) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Admin Adminson', 'admin@admin.com', '333-444-5555', true);
 
-INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Roy','Daveville''s Dog', 'https://i.postimg.cc/rs5qcCqw/dog1.png', 'the cutest pupper', 'squirrel');
-INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Dave','Mayor of Daveville', 'https://i.postimg.cc/C13wW6T2/dog2.png', 'mayorial dog', 'government');
-INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Tyson','Leader of the Cigar Party', 'https://www.murderati.com/storage/squirrel-smoke.jpg?__SQUARESPACE_CACHEVERSION=1256940730989', 'ringleader', 'badass squirrel');
-INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Tramp', 'He''s a tramp but we love him', 'https://content.internetvideoarchive.com/content/hdphotos/12623/012623/012623_1280x720_105964_020.jpg', 'mutt', 'dog');
-
 INSERT INTO application_status (application_status_id, application_status) VALUES (1, 'Pending');
 INSERT INTO application_status (application_status_id, application_status) VALUES (2, 'Approved');
 INSERT INTO application_status (application_status_id, application_status) VALUES (3, 'Denied');
 
 INSERT INTO applications (application_status_id, name, email, phone, description) VALUES('1', 'Peggy Sue', 'peggy.sue@gmail.com', '513-123-4567', 'I am only a test');
 INSERT INTO applications (application_status_id, name, email, phone, description) VALUES('1', 'Johnny Cash', 'cash4cash@gmail.com', '123-421-9999', 'Folsom Prison Blues makes me good with animals');
+
+/* Pets For Adoption */
+INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Roy','Daveville''s Dog', 'https://i.postimg.cc/rs5qcCqw/dog1.png', 'Cocker Spaniel', 'Dog');
+INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Dave','Mayor of Daveville', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNWBYvFHfc9RaM3PLoHRPnssW3edR4a9orIg&usqp=CAU', 'Retriever Mix', 'Dog');
+INSERT INTO pets (name,description,pic,breed,pet_type) VALUES ('Tyson','WHAT''S UP CODERS?', 'https://1.bp.blogspot.com/-zD25B2DiraE/XWdvS58yc2I/AAAAAAAADXw/zrIUj_mIQxI6sRpPRf0dhkkw_M9zWxfcgCLcBGAs/s1600/irish%2Bsetter.jpg', 'Golden Retriever', 'Dog');
+
+insert into pets (name, description, pic, breed, pet_type) values ('Augustus', 'visualize best-of-breed paradigms', 'https://dogopedia.net/wp-content/uploads/2018/09/How-To-Train-a-Dog-to-Lie-Down.jpg', 'Chocolate Lab', 'Dog');
+insert into pets (name, description, pic, breed, pet_type) values ('Pascale', 'deliver interactive systems', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsVvfanIQW3M2RwVtaD0nf8BeE74r-mUqT-g&usqp=CAU', 'Golden Retriever', 'Dog');
+insert into pets (name, description, pic, breed, pet_type) values ('Duke', 'sunshine incarnate', 'https://storage.googleapis.com/petbacker/images/blog/2017/german-shepherd-is-happy.jpg', 'German Shepherd', 'Dog');
+
+insert into pets (name, description, pic, breed, pet_type) values ('Cathie', 'recontextualize frictionless content', 'https://petallianceorlando.org/wp-content/uploads/2014/11/cat-laying-down.jpg', 'Striped Tabby', 'Cat');
+insert into pets (name, description, pic, breed, pet_type) values ('Madelene', 'recontextualize magnetic architectures', 'https://checkmember.com/wp-content/uploads/2019/11/Orange-tabby-cat-wiith-alien-green-eyes-e1574969221248.jpg', 'Orange Tabby', 'Cat');
+insert into pets (name, description, pic, breed, pet_type) values ('Xymenes', 'expedite innovative interfaces', 'https://www.rover.com/blog/wp-content/uploads/2019/07/Himalayan-sitting-on-floor.jpg', 'Himalayan', 'Cat');
+
+insert into pets (name, description, pic, breed, pet_type) values ('Giacobo', 'Mecozzi', 'https://allaboutcats.com/wp-content/uploads/2020/10/Bengal-cat.jpg', 'Bengal', 'Cat');
+insert into pets (name, description, pic, breed, pet_type) values ('Charlene', 'Edge', 'https://www.pumpkin.care/blog/wp-content/uploads/2020/11/10-Best-Names-For-Siamese-Cats-1200x628.jpg', 'Siamese', 'Cat');
+insert into pets (name, description, pic, breed, pet_type) values ('Clarabelle', 'Gumey', 'https://d3544la1u8djza.cloudfront.net/APHI/Blog/2016/10_October/persians/Persian+Cat+Facts+History+Personality+and+Care+_+ASPCA+Pet+Health+Insurance+_+white+Persian+cat+resting+on+a+brown+sofa-min.jpg', 'Persian', 'Cat');
+
+/* Adopted Pets */
+insert into pets (name, description, is_adoptable, pic, breed, pet_type) values ('Blue', 'incentivize granular initiatives', false, 'https://img.nickpic.host/qEUC4D.jpg', 'Thai Ridgeback', 'Dog');
+insert into pets (name, description, is_adoptable, pic, breed, pet_type) values ('Allie May', 'synergize ubiquitous e-services', false, 'https://img.nickpic.host/qEUQP5.jpg', 'Yorkie', 'Dog');
+insert into pets (name, description, is_adoptable, pic, breed, pet_type) values ('Mike', 'scrum master', false, 'https://img.nickpic.host/qE17oM.png', 'Chocolate Lab', 'Dog');
 
 COMMIT TRANSACTION;
