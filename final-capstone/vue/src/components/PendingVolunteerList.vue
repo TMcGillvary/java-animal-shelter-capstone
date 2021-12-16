@@ -21,12 +21,12 @@
         <tbody>
           <tr>
             <td>
-              <input
+              <!-- <input
                 type="checkbox"
                 id="selectAll"
                 v-model="allSelected"
                 v-on:click="toggleAllCheckboxes()"
-              />
+              /> -->
             </td>
             <!-- None of this is working right now... leaving to come back to later -->
             <!--
@@ -61,7 +61,8 @@
             v-bind:key="volunteer.applicationID"
           >
             <td>
-              <input
+              <!-- <td>
+               <input
                 type="checkbox"
                 v-bind:id="volunteer.applicationID"
                 v-bind:value="volunteer.applicationID"
@@ -71,6 +72,7 @@
                 }"
                 v-bind:change="updateCheckboxes()"
               />
+            </td> -->
             </td>
             <td>{{ volunteer.name }}</td>
             <td>{{ volunteer.email }}</td>
@@ -92,22 +94,22 @@
       </table>
 
       <!-- Approve/Deny All Buttons -->
-      <div class="all-actions">
-        <!-- this code is incomplete, needs finished -->
+      <!-- <div class="all-actions">
+       this code is incomplete, needs finished 
         <button
           :disabled="actionButtonDisabled"
           v-on:click="approveSelectedApps()"
         >
           Approve Pending Apps
         </button>
-        <!-- this code is incomplete, needs finished -->
+       this code is incomplete, needs finished 
         <button
           :disabled="actionButtonDisabled"
           v-on:click="denySelectedApps()"
         >
           Deny Pending Apps
         </button>
-      </div>
+      </div> -->
     </div>
 
     <footer-area />
