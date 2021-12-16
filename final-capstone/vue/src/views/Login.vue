@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <div v-if="$store.state.token != ''">
-      <h1>Welcome, {{ $store.state.user.full_name }}</h1>
+      <h1 class="welcome">Welcome, {{ $store.state.user.full_name }}</h1>
     </div>
 
     <form
@@ -78,5 +78,8 @@ export default {
 <style scoped>
 .form-control {
   margin: 5px;
+}
+.welcome {
+  font-size: 25px;
 }
 </style>

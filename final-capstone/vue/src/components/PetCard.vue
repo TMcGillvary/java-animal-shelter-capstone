@@ -1,9 +1,9 @@
 <template>
   <div class="petcard">
-    <h2>{{ pet.name }}</h2>
     <div class="img-container">
       <img v-bind:src="pet.pic" />
     </div>
+    <h2>{{ pet.name }}</h2>
     <p>{{ pet.description }}</p>
     <p>Type: {{ pet.pet_type }}</p>
     <p>Breed: {{ pet.breed }}</p>
@@ -175,6 +175,9 @@ export default {
   object-fit: cover;
   object-position: center;
 }
+.button-style {
+  border: none;
+}
 
 /************************************
  All the CSS for the confetti button 
@@ -197,6 +200,7 @@ export default {
   appearance: none;
 
   position: relative;
+  border: none;
 }
 
 /* .confetti-button.animate:hover {

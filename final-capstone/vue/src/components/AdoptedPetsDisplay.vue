@@ -3,7 +3,10 @@
     <div class="head2">
       <header-area />
     </div>
-
+    <div class="logged-in-view">
+      <logged-in-view />
+    </div>
+    <h1>Adopted Pets</h1>
     <div id="pets-display">
       <pet-card
         id="pet-card"
@@ -25,6 +28,7 @@ import PetCard from "@/components/PetCard.vue";
 
 import HeaderArea from "@/components/HeaderArea.vue";
 import FooterArea from "@/components/FooterArea.vue";
+import LoggedInView from "@/views/LoggedInView.vue";
 
 export default {
   name: "adopted-pets",
@@ -32,6 +36,7 @@ export default {
     PetCard,
     HeaderArea,
     FooterArea,
+    LoggedInView,
   },
   created() {
     petServices.displayPets().then((response) => {
@@ -47,12 +52,20 @@ export default {
     },
   },
 };
-</script>
+</script >
 
-<style>
+<style >
 #pets-display {
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 100px;
+}
+.head2 {
+  margin-bottom: 80px;
+}
+
+h1 {
+  margin-bottom: 90px;
 }
 </style>

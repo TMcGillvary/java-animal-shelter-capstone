@@ -201,6 +201,7 @@ select.form-control {
   font-size: 1.5rem;
   font-family: "Quicksand", sans-serif;
   font-weight: bold;
+  border: none;
 }
 
 .btn-cancel {
@@ -214,6 +215,7 @@ select.form-control {
   font-size: 1.5rem;
   font-family: "Quicksand", sans-serif;
   font-weight: bold;
+  border: none;
 }
 
 .status-message {

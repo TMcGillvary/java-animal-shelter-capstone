@@ -30,6 +30,8 @@ export default {
 .header-image img {
   width: 250px;
   height: 100%;
+  margin-left: 0px;
+  margin-right: 265px;
 }
 
 .navigation {

@@ -24,13 +24,10 @@
             <div>
               <img src="@/assets/congrats1-1.png" />
             </div>
-           
-            
           </slot>
         </section>
 
         <footer class="modal-footer">
-          
           <button
             type="button"
             class="btn-green"
@@ -46,7 +43,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Modal",
   methods: {
@@ -55,7 +51,6 @@ export default {
     },
 
     // this is the code for confetti
-   
   },
 };
 </script>
@@ -125,6 +120,10 @@ export default {
   background: #4aae9b;
   border: 1px solid #4aae9b;
   border-radius: 2px;
+  width: 200px;
+  height: 40px;
+  margin: auto;
+  font-size: 18px;
 }
 
 .modal-fade-enter,

@@ -8,7 +8,7 @@
       <logged-in-view />
     </div>
     <div class="pets-area">
-      <h1>Check Out Our Pets!!</h1>
+      <h1>Available for Adoption!</h1>
       <pets-display />
     </div>
     <div class="volunteer">
@@ -46,6 +46,10 @@ added a grid area for logged in view -ang
 */
 .head2 {
   grid-area: header;
+  margin-bottom: 50px;
+}
+h1 {
+  margin-bottom: 90px;
 }
 
 .logged-in-view {
@@ -58,6 +62,8 @@ added a grid area for logged in view -ang
 
 .volunteer {
   grid-area: vform;
+  margin-top: 85px;
+  margin-bottom: 85px;
 }
 
 .footer2 {
@@ -67,6 +73,7 @@ added a grid area for logged in view -ang
 /* 
 Desktop Layout
 added "logged-in-view" to grid areas -ang
+
 */
 
 #home {
